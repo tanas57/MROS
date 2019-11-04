@@ -6,10 +6,12 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using MROS_API.Data;
 
 namespace MROS_API
 {
@@ -25,6 +27,9 @@ namespace MROS_API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<ProjectContext>(options =>
+            //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            options.UseSqlServer(Configuration.GetConnectionString("ServerConnection")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -36,12 +41,13 @@ namespace MROS_API
                 app.UseDeveloperExceptionPage();
             }
             else
-            {
                 app.UseHsts();
-            }
 
             app.UseHttpsRedirection();
             app.UseMvc();
+
+            // create db and tables if is not it exists
+            DbHelper.Initialize(app);
         }
     }
 }
