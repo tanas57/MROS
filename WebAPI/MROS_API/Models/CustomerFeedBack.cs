@@ -7,7 +7,7 @@ namespace MROS_API.Models
         [Key]
         public int ID { get; set; }
         public Customer Owner { get; set; }
-        public Order Order { get; set; }
+        public Restaurant Restaurant { get; set; }
         public double Rating { get; set; }
         public string Message { get; set; }
     }

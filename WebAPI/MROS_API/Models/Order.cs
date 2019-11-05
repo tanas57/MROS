@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MROS_API.Models
 {
@@ -13,6 +10,7 @@ namespace MROS_API.Models
         public Restaurant Restaurant { get; set; }
         public Table Table { get; set; }
         public ICollection<Product> Products { get; set; }
+        public double TotalCost { get; set; }
         public bool Status { get; set; }
     }
 }

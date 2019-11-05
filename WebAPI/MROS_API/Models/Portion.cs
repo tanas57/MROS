@@ -10,7 +10,6 @@ namespace MROS_API.Models
     {
         [Key]
         public int ID { get; set; }
-        public Order Order { get; set; }
         public string PortionName { get; set; }
         public double Cost { get; set; }
     }

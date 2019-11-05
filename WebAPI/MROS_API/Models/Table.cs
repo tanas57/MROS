@@ -10,8 +10,8 @@ namespace MROS_API.Models
     {
         [Key]
         public int ID { get; set; }
-        public string TableName { get; set; }
         public Restaurant Restaurant { get; set; }
+        public string TableName { get; set; }
         public bool Status { get; set; }
     }
 }

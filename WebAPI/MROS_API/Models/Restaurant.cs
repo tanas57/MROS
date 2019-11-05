@@ -16,10 +16,7 @@ namespace MROS_API.Models
         public double Latitude { get; set; }
         public double Longitude { get; set; }
         public bool Status { get; set; }
-        public ICollection<Table> Tables { get; set; }
-        public ICollection<ProductCategory> ProductCategories { get; set; }
-        public ICollection<CustomerFeedBack> CustomerFeeds { get; set; }
         public int OrderCount { get; set; }
-        public double CostCount { get; set; }
+        public double TotalGain { get; set; }
     }
 }
