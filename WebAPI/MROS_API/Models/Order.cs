@@ -9,7 +9,6 @@ namespace MROS_API.Models
         public int ID { get; set; }
         public Restaurant Restaurant { get; set; }
         public Table Table { get; set; }
-        public ICollection<Product> Products { get; set; }
         public double TotalCost { get; set; }
         public bool Status { get; set; }
     }

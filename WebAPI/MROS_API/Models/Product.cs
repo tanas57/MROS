@@ -15,8 +15,6 @@ namespace MROS_API.Models
         public string IMG { get; set; }
         public Restaurant Restaurant { get; set; }
         public ProductCategory ProductCategory { get; set; }
-        public ICollection<ProductDetail> Content { get; set; }
         public bool IsPortionable { get; set; }
-        public ICollection<Portion> Portions { get; set; }
     }
 }

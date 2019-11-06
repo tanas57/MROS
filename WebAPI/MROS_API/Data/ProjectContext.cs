@@ -11,7 +11,6 @@ namespace MROS_API.Data
         {
             base.OnModelCreating(modelBuilder);
         }
-
         public DbSet<Customer> Customers { get; set; }
         public DbSet<CustomerFeedBack> CustomerFeeds { get; set; }
         public DbSet<Order> Orders { get; set; }
@@ -21,6 +20,5 @@ namespace MROS_API.Data
         public DbSet<Restaurant> Restaurants { get; set; }
         public DbSet<Table> Tables { get; set; }
         public DbSet<ProductCategory> ProductCategories { get; set; }
-
     }
 }
