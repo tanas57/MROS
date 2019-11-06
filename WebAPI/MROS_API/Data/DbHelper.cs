@@ -28,15 +28,15 @@ namespace MROS_API.Data
                 context.Restaurants.AddRange(restaurants);
                 context.SaveChanges();
 
-                var tables = AddTables().ToArray();
+                var tables = AddTables(context).ToArray();
                 context.Tables.AddRange(tables);
                 context.SaveChanges();
 
-                var productCategories = GetProductCategories().ToArray();
+                var productCategories = GetProductCategories(context).ToArray();
                 context.ProductCategories.AddRange(productCategories);
                 context.SaveChanges();
 
-                var products = GetProducts().ToArray();
+                var products = GetProducts(context).ToArray();
                 context.Products.AddRange(products);
                 context.SaveChanges();
 
@@ -81,57 +81,53 @@ namespace MROS_API.Data
             return GetRestaurants()[id];
         }
 
-        public static List<Table> AddTables()
+        public static List<Table> AddTables(ProjectContext db)
         {
             List<Table> tables = new List<Table>()
             {
-                new Table(){ Restaurant = GetRestaurant(0), TableName = "Bahçe 1", Status = true, },
-                new Table(){ Restaurant = GetRestaurant(0), TableName = "Bahçe 2", Status = true, },
-                new Table(){ Restaurant = GetRestaurant(0), TableName = "Bahçe 3", Status = true, },
-                new Table(){ Restaurant = GetRestaurant(1), TableName = "Sağ Kısım 1", Status = true, },
-                new Table(){ Restaurant = GetRestaurant(1), TableName = "Sağ Kısım 2", Status = true, },
-                new Table(){ Restaurant = GetRestaurant(1), TableName = "Sağ Kısım 3", Status = true, },
-                new Table(){ Restaurant = GetRestaurant(2), TableName = "İçeri A-1", Status = true, },
-                new Table(){ Restaurant = GetRestaurant(2), TableName = "İçeri A-2", Status = true, },
-                new Table(){ Restaurant = GetRestaurant(2), TableName = "VIP1", Status = true, }
+                new Table(){ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 1), TableName = "Bahçe 1", Status = true, },
+                new Table(){ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 1), TableName = "Bahçe 2", Status = true, },
+                new Table(){ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 1), TableName = "Bahçe 3", Status = true, },
+                new Table(){ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 2), TableName = "Sağ Kısım 1", Status = true, },
+                new Table(){ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 2), TableName = "Sağ Kısım 2", Status = true, },
+                new Table(){ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 2), TableName = "Sağ Kısım 3", Status = true, },
+                new Table(){ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 3), TableName = "İçeri A-1", Status = true, },
+                new Table(){ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 3), TableName = "İçeri A-2", Status = true, },
+                new Table(){ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 3), TableName = "VIP1", Status = true, }
             };
             return tables;
         }
 
-        public static List<ProductCategory> GetProductCategories()
+        public static List<ProductCategory> GetProductCategories(ProjectContext db)
         {
             List<ProductCategory> productCategories = new List<ProductCategory>()
             {
-                new ProductCategory(){ Restaurant = GetRestaurant(0), CatName = "Kahvaltılar", Counter = 0 , Status = true},
-                new ProductCategory(){ Restaurant = GetRestaurant(0), CatName = "Pastalar", Counter = 0 , Status = true},
-                new ProductCategory(){ Restaurant = GetRestaurant(0), CatName = "İçecekler", Counter = 0 , Status = true},
-                new ProductCategory(){ Restaurant = GetRestaurant(1), CatName = "Döner Ürünleri", Counter = 0 , Status = true},
-                new ProductCategory(){ Restaurant = GetRestaurant(1), CatName = "İçecekler", Counter = 0 , Status = true},
-                new ProductCategory(){ Restaurant = GetRestaurant(1), CatName = "Tatlılar", Counter = 0 , Status = true},
-                new ProductCategory(){ Restaurant = GetRestaurant(2), CatName = "Pideler", Counter = 0 , Status = true},
-                new ProductCategory(){ Restaurant = GetRestaurant(2), CatName = "Kebaplar", Counter = 0 , Status = true},
-                new ProductCategory(){ Restaurant = GetRestaurant(2), CatName = "İçecekler", Counter = 0 , Status = true},
+                new ProductCategory(){ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 1), CatName = "Kahvaltılar", Counter = 0 , Status = true},
+                new ProductCategory(){ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 1), CatName = "Pastalar", Counter = 0 , Status = true},
+                new ProductCategory(){ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 1), CatName = "İçecekler", Counter = 0 , Status = true},
+                new ProductCategory(){ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 2), CatName = "Döner Ürünleri", Counter = 0 , Status = true},
+                new ProductCategory(){ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 2), CatName = "İçecekler", Counter = 0 , Status = true},
+                new ProductCategory(){ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 2), CatName = "Tatlılar", Counter = 0 , Status = true},
+                new ProductCategory(){ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 3), CatName = "Pideler", Counter = 0 , Status = true},
+                new ProductCategory(){ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 3), CatName = "Kebaplar", Counter = 0 , Status = true},
+                new ProductCategory(){ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 3), CatName = "İçecekler", Counter = 0 , Status = true},
             };
             return productCategories;
         }
 
-        public static ProductCategory GetProductCategory(int id)
-        {
-            return GetProductCategories()[id];
-        }
 
-        public static List<Product> GetProducts()
+        public static List<Product> GetProducts(ProjectContext db)
         {
             List<Product> products = new List<Product>()
             {
-                new Product{ Restaurant = GetRestaurant(0), Name = "Sade Poğaca", Price = 1.5, IsPortionable = false, ProductCategory = GetProductCategory(0)},
-                new Product{ Restaurant = GetRestaurant(0), Name = "Kaşarlı Poğaca", Price = 1.75, IsPortionable = false, ProductCategory = GetProductCategory(0)},
-                new Product{ Restaurant = GetRestaurant(0), Name = "Zeytinli Poğaca", Price = 1.5, IsPortionable = false, ProductCategory = GetProductCategory(0)},
-                new Product{ Restaurant = GetRestaurant(0), Name = "Çilekli Dilim Pasta", Price = 9.50, IsPortionable = false, ProductCategory = GetProductCategory(1)},
-                new Product{ Restaurant = GetRestaurant(0), Name = "Traliçe", Price = 8.75, IsPortionable = false, ProductCategory = GetProductCategory(1)},
-                new Product{ Restaurant = GetRestaurant(1), Name = "Katık", Price = 10, IsPortionable = false, ProductCategory = GetProductCategory(3)},
-                new Product{ Restaurant = GetRestaurant(1), Name = "Antakya Döner", Price = 10, IsPortionable = false, ProductCategory = GetProductCategory(3)},
-                new Product{ Restaurant = GetRestaurant(1), Name = "İskenderun Döner", Price = 10, IsPortionable = false, ProductCategory = GetProductCategory(3)},
+                new Product{ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 1), Name = "Sade Poğaca", Price = 1.5, IsPortionable = false, ProductCategory = db.ProductCategories.FirstOrDefault(x=> x.ID == 1)},
+                new Product{ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 1), Name = "Kaşarlı Poğaca", Price = 1.75, IsPortionable = false, ProductCategory = db.ProductCategories.FirstOrDefault(x=> x.ID == 1)},
+                new Product{ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 1), Name = "Zeytinli Poğaca", Price = 1.5, IsPortionable = false, ProductCategory = db.ProductCategories.FirstOrDefault(x=> x.ID == 1)},
+                new Product{ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 1), Name = "Çilekli Dilim Pasta", Price = 9.50, IsPortionable = false, ProductCategory = db.ProductCategories.FirstOrDefault(x=> x.ID == 2)},
+                new Product{ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 1), Name = "Traliçe", Price = 8.75, IsPortionable = false, ProductCategory = db.ProductCategories.FirstOrDefault(x=> x.ID == 2)},
+                new Product{ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 2), Name = "Katık", Price = 10, IsPortionable = false, ProductCategory = db.ProductCategories.FirstOrDefault(x=> x.ID == 3)},
+                new Product{ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 2), Name = "Antakya Döner", Price = 10, IsPortionable = false, ProductCategory = db.ProductCategories.FirstOrDefault(x=> x.ID == 3)},
+                new Product{ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 2), Name = "İskenderun Döner", Price = 10, IsPortionable = false, ProductCategory = db.ProductCategories.FirstOrDefault(x=> x.ID == 3)},
 
             };
             return products;
