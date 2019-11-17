@@ -9,7 +9,9 @@
         android:id="@+id/sliderImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="196dp"
+        android:layout_marginStart="111dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="111dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,6 +26,7 @@
         android:text="HEADING"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:textColor="@color/colorTransparentWhite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sliderImage" />
@@ -34,10 +37,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:padding="30dp"
-        android:text="TextView"
-        android:textColor="#ABA9B2"
+        android:text="TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView "
+        android:textColor = "@android:color/white"
         android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sliderTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/sliderTitle"
+        app:layout_constraintVertical_bias="0.016" />
 </androidx.constraintlayout.widget.ConstraintLayout>
