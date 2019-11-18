@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MROS_API.Data;
@@ -9,58 +10,58 @@ using MROS_API.Models;
 
 namespace MROS_API.Controllers
 {
-    [Route("api/v1/restaurant")]
+    [Route("api/[controller]")]
     [ApiController]
-    public class RestaurantsController : ControllerBase
+    public class CustomersController : ControllerBase
     {
         private readonly ProjectContext _context;
 
-        public RestaurantsController(ProjectContext context)
+        public CustomersController(ProjectContext context)
         {
             _context = context;
         }
 
-        // GET: api/Restaurants
+        // GET: api/Customers
         [HttpGet]
-        public IEnumerable<Restaurant> GetRestaurants()
+        public IEnumerable<Customer> GetCustomers()
         {
-            return _context.Restaurants;
+            return _context.Customers;
         }
 
-        // GET: api/Restaurants/5
+        // GET: api/Customers/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetRestaurant([FromRoute] int id)
+        public async Task<IActionResult> GetCustomer([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var restaurant = await _context.Restaurants.FindAsync(id);
+            var customer = await _context.Customers.FindAsync(id);
 
-            if (restaurant == null)
+            if (customer == null)
             {
                 return NotFound();
             }
 
-            return Ok(restaurant);
+            return Ok(customer);
         }
 
-        // PUT: api/Restaurants/5
+        // PUT: api/Customers/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutRestaurant([FromRoute] int id, [FromBody] Restaurant restaurant)
+        public async Task<IActionResult> PutCustomer([FromRoute] int id, [FromBody] Customer customer)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != restaurant.ID)
+            if (id != customer.ID)
             {
                 return BadRequest();
             }
 
-            _context.Entry(restaurant).State = EntityState.Modified;
+            _context.Entry(customer).State = EntityState.Modified;
 
             try
             {
@@ -68,7 +69,7 @@ namespace MROS_API.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!RestaurantExists(id))
+                if (!CustomerExists(id))
                 {
                     return NotFound();
                 }
@@ -81,45 +82,45 @@ namespace MROS_API.Controllers
             return NoContent();
         }
 
-        // POST: api/Restaurants
+        // POST: api/Customers
         [HttpPost]
-        public async Task<IActionResult> PostRestaurant([FromBody] Restaurant restaurant)
+        public async Task<IActionResult> PostCustomer([FromBody] Customer customer)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Restaurants.Add(restaurant);
+            _context.Customers.Add(customer);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetRestaurant", new { id = restaurant.ID }, restaurant);
+            return CreatedAtAction("GetCustomer", new { id = customer.ID }, customer);
         }
 
-        // DELETE: api/Restaurants/5
+        // DELETE: api/Customers/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteRestaurant([FromRoute] int id)
+        public async Task<IActionResult> DeleteCustomer([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var restaurant = await _context.Restaurants.FindAsync(id);
-            if (restaurant == null)
+            var customer = await _context.Customers.FindAsync(id);
+            if (customer == null)
             {
                 return NotFound();
             }
 
-            _context.Restaurants.Remove(restaurant);
+            _context.Customers.Remove(customer);
             await _context.SaveChangesAsync();
 
-            return Ok(restaurant);
+            return Ok(customer);
         }
 
-        private bool RestaurantExists(int id)
+        private bool CustomerExists(int id)
         {
-            return _context.Restaurants.Any(e => e.ID == id);
+            return _context.Customers.Any(e => e.ID == id);
         }
     }
 }
