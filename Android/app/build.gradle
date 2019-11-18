@@ -28,4 +28,5 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'com.google.android.material:material:1.0.0'
+    implementation 'me.dm7.barcodescanner:zxing:1.9.13'
 }

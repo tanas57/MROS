@@ -1,21 +1,19 @@
 package net.muslu.mros.StartupScreen;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
+import net.muslu.mros.BarcodeRead;
 import net.muslu.mros.R;
 
-public class EnterRestaurant extends AppCompatActivity {
+
+public class EnterRestaurant extends AppCompatActivity  {
 
     private ViewPager viewPager;
     private LinearLayout dotLayout;
@@ -23,6 +21,8 @@ public class EnterRestaurant extends AppCompatActivity {
     private SliderAdaptor sliderAdaptor;
     private Button next, previous;
     private int pageCounter = 0;
+    private String nextButton = "İleri", finishButton = "Bitir";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,13 +52,13 @@ public class EnterRestaurant extends AppCompatActivity {
                     next.setVisibility(View.VISIBLE);
                 }
                 else if(position == sliderAdaptor.getCount() - 1){
-                    next.setText("Bitir");
+                    next.setText(finishButton);
                 }
                 else{
                     previous.setVisibility(View.VISIBLE);
                     next.setVisibility(View.VISIBLE);
                 }
-                if(position != sliderAdaptor.getCount() - 1) next.setText("İleri");
+                if(position != sliderAdaptor.getCount() - 1) next.setText(nextButton);
             }
 
             @Override
@@ -71,6 +71,10 @@ public class EnterRestaurant extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 viewPager.setCurrentItem(pageCounter + 1);
+                if(next.getText().equals(finishButton)){ // open camera to reading barcode
+                    Intent barcodeRead = new Intent(getApplicationContext(), BarcodeRead.class);
+                    startActivity(barcodeRead);
+                }
             }
         });
 
@@ -101,4 +105,5 @@ public class EnterRestaurant extends AppCompatActivity {
         if(dots.length > 0)
             dots[0].setTextColor(getResources().getColor(R.color.colorAccent));
     }
+
 }
