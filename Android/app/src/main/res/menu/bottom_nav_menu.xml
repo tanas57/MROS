@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/navigation_order"
+        android:icon="@drawable/ic_restaurant_menu_black_64dp"
+        android:title="@string/title_order" />
+
+    <item
+        android:id="@+id/navigation_basket"
+        android:icon="@drawable/ic_shopping_basket_black_64dp"
+        android:title="@string/title_basket" />
+
+    <item
+        android:id="@+id/navigation_comment"
+        android:icon="@drawable/ic_comment_black_64dp"
+        android:title="@string/title_comment" />
+
+    <item
+        android:id="@+id/navigation_other"
+        android:icon="@drawable/ic_menu_black_64dp"
+        android:title="@string/title_other" />
+
+</menu>

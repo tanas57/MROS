@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">MROS</string>
+    <string name="title_order">Sipariş</string>
+    <string name="title_basket">Sepet</string>
+    <string name="title_comment">Yorumlar</string>
+    <string name="title_other">Diğer</string>
+    <string name="title_activity_main_page">MainPage</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>
