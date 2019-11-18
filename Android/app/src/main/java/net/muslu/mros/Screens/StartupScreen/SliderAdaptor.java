@@ -1,4 +1,4 @@
-package net.muslu.mros.StartupScreen;
+package net.muslu.mros.Screens.StartupScreen;
 
 import android.content.Context;
 import android.view.LayoutInflater;

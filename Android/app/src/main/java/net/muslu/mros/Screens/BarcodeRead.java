@@ -1,8 +1,7 @@
-package net.muslu.mros;
+package net.muslu.mros.Screens;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.media.AudioManager;
@@ -11,11 +10,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
 import com.google.zxing.Result;
-
-import java.security.acl.Permission;
-
+import net.muslu.mros.R;
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 public class BarcodeRead extends AppCompatActivity implements ZXingScannerView.ResultHandler {

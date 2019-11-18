@@ -1,4 +1,4 @@
-package net.muslu.mros.StartupScreen;
+package net.muslu.mros.Screens.StartupScreen;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
@@ -9,8 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import net.muslu.mros.BarcodeRead;
+
 import net.muslu.mros.R;
+import net.muslu.mros.Screens.BarcodeRead;
 
 
 public class EnterRestaurant extends AppCompatActivity  {
@@ -70,11 +71,12 @@ public class EnterRestaurant extends AppCompatActivity  {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                viewPager.setCurrentItem(pageCounter + 1);
+
                 if(next.getText().equals(finishButton)){ // open camera to reading barcode
                     Intent barcodeRead = new Intent(getApplicationContext(), BarcodeRead.class);
                     startActivity(barcodeRead);
                 }
+                viewPager.setCurrentItem(pageCounter + 1);
             }
         });
 

@@ -1,8 +1,10 @@
-package net.muslu.mros;
+package net.muslu.mros.Screens;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import net.muslu.mros.R;
 
 public class MainActivity extends AppCompatActivity {
 

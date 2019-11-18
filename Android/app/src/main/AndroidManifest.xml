@@ -9,15 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".BarcodeRead"></activity>
-        <activity android:name=".StartupScreen.EnterRestaurant">
+        <activity android:name=".Screens.BarcodeRead"></activity>
+        <activity android:name=".Screens.StartupScreen.EnterRestaurant">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".Screens.MainActivity"></activity>
     </application>
 
 </manifest>

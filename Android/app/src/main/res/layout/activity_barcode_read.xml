@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="23dp"
-    tools:context=".BarcodeRead">
+    tools:context=".Screens.BarcodeRead">
 
     <TextView
         android:layout_width="match_parent"
@@ -14,7 +14,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:background="@color/colorAccent"
         android:textColor="@android:color/white"
-        android:text="Msadaki barkodu okutunuz"
+        android:text="Masadaki barkodu okutunuz"
         android:textSize="20dp"
         android:padding="7dp"
         android:gravity="center"
