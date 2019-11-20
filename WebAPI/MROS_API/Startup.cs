@@ -28,8 +28,8 @@ namespace MROS_API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ProjectContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            //options.UseSqlServer(Configuration.GetConnectionString("ServerConnection")));
+            //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            options.UseSqlServer(Configuration.GetConnectionString("ServerConnection")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

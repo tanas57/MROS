@@ -1,0 +1,16 @@
+C:\Users\MusluNET\Documents\GitHub\MROS\WebAPI\MROS_API\bin\Release\netcoreapp2.1\appsettings.Development.json
+C:\Users\MusluNET\Documents\GitHub\MROS\WebAPI\MROS_API\bin\Release\netcoreapp2.1\appsettings.json
+C:\Users\MusluNET\Documents\GitHub\MROS\WebAPI\MROS_API\bin\Release\netcoreapp2.1\Properties\launchSettings.json
+C:\Users\MusluNET\Documents\GitHub\MROS\WebAPI\MROS_API\bin\Release\netcoreapp2.1\MROS_API.deps.json
+C:\Users\MusluNET\Documents\GitHub\MROS\WebAPI\MROS_API\bin\Release\netcoreapp2.1\MROS_API.runtimeconfig.json
+C:\Users\MusluNET\Documents\GitHub\MROS\WebAPI\MROS_API\bin\Release\netcoreapp2.1\MROS_API.runtimeconfig.dev.json
+C:\Users\MusluNET\Documents\GitHub\MROS\WebAPI\MROS_API\bin\Release\netcoreapp2.1\MROS_API.dll
+C:\Users\MusluNET\Documents\GitHub\MROS\WebAPI\MROS_API\bin\Release\netcoreapp2.1\MROS_API.pdb
+C:\Users\MusluNET\Documents\GitHub\MROS\WebAPI\MROS_API\obj\Release\netcoreapp2.1\MROS_API.csprojAssemblyReference.cache
+C:\Users\MusluNET\Documents\GitHub\MROS\WebAPI\MROS_API\obj\Release\netcoreapp2.1\MROS_API.RazorAssemblyInfo.cache
+C:\Users\MusluNET\Documents\GitHub\MROS\WebAPI\MROS_API\obj\Release\netcoreapp2.1\MROS_API.RazorAssemblyInfo.cs
+C:\Users\MusluNET\Documents\GitHub\MROS\WebAPI\MROS_API\obj\Release\netcoreapp2.1\MROS_API.AssemblyInfoInputs.cache
+C:\Users\MusluNET\Documents\GitHub\MROS\WebAPI\MROS_API\obj\Release\netcoreapp2.1\MROS_API.AssemblyInfo.cs
+C:\Users\MusluNET\Documents\GitHub\MROS\WebAPI\MROS_API\obj\Release\netcoreapp2.1\MROS_API.RazorTargetAssemblyInfo.cache
+C:\Users\MusluNET\Documents\GitHub\MROS\WebAPI\MROS_API\obj\Release\netcoreapp2.1\MROS_API.dll
+C:\Users\MusluNET\Documents\GitHub\MROS\WebAPI\MROS_API\obj\Release\netcoreapp2.1\MROS_API.pdb

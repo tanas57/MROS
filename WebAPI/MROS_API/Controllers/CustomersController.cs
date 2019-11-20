@@ -10,7 +10,7 @@ using MROS_API.Models;
 
 namespace MROS_API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("v1/customer/")]
     [ApiController]
     public class CustomersController : ControllerBase
     {

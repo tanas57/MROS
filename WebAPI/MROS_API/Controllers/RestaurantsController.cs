@@ -9,7 +9,7 @@ using MROS_API.Models;
 
 namespace MROS_API.Controllers
 {
-    [Route("api/v1/restaurant")]
+    [Route("v1/restaurant")]
     [ApiController]
     public class RestaurantsController : ControllerBase
     {

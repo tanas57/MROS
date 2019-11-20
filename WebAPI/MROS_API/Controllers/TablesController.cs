@@ -10,7 +10,7 @@ using MROS_API.Models;
 
 namespace MROS_API.Controllers
 {
-    [Route("api/v1/table/")]
+    [Route("v1/table/")]
     [ApiController]
     public class TablesController : ControllerBase
     {
@@ -36,7 +36,7 @@ namespace MROS_API.Controllers
                 return BadRequest(ModelState);
             }
 
-            var table = await _context.Tables.FindAsync(id);
+            var table = await _context.Tables.Include(x=> x.Restaurant).FirstOrDefaultAsync(x=> x.ID == id);
 
             if (table == null)
             {
@@ -45,25 +45,23 @@ namespace MROS_API.Controllers
 
             return Ok(table);
         }
-        [Route("/getRestaurant/{id}")]
-        [HttpGet]
-        public async Task<IActionResult> GetRestaurant([FromRoute] int id)
+
+        [HttpGet("restaurant/{table_id}")]
+        public async Task<IActionResult> GetRestaurantofTable([FromRoute] int table_id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var table = await _context.Tables.FindAsync(id);
+            var table = await _context.Tables.FindAsync(table_id);
 
             if (table == null)
             {
                 return NotFound();
             }
 
-            var restaurant = await _context.Restaurants.FirstOrDefaultAsync(x => x.ID == table.Restaurant.ID);
-
-            return Ok(restaurant);
+            return Ok(table.Restaurant);
         }
 
 
