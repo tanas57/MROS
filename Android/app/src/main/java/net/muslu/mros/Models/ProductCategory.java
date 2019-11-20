@@ -65,4 +65,6 @@ public class ProductCategory {
     public void setProducts(List<Product> products) {
         this.products = products;
     }
+
+    public int getProductCount(){ return this.products.size(); }
 }

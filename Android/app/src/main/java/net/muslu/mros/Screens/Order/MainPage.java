@@ -133,9 +133,11 @@ public class MainPage extends AppCompatActivity {
             super.onPostExecute(productCategories);
             String rs = "";
             for (ProductCategory cat : productCategories){
-                rs += cat.getCatName() + "\n\n";
-                for(Product product : cat.getProducts()){
-                    rs += "" + product.getName() +  " " +  product.getPrice() + "\n";
+                if(cat.getProductCount()>0) {
+                    rs += "\n\n" +cat.getCatName() + "\n\n";
+                    for (Product product : cat.getProducts()) {
+                        rs += "" + product.getName() + " " + product.getPrice() + "\n";
+                    }
                 }
             }
             result.setText(rs);
