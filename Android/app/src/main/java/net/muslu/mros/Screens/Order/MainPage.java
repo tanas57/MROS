@@ -10,14 +10,30 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import net.muslu.mros.Models.Restaurant;
 import net.muslu.mros.R;
 
 public class MainPage extends AppCompatActivity {
+
+    private Restaurant restaurant;
+
+    protected Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    protected void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
+
+        if( getIntent().getExtras() != null){
+            setRestaurant((Restaurant)getIntent().getExtras().get("restaurant"));
+        }
+
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.

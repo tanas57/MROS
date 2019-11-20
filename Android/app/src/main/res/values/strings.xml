@@ -6,4 +6,6 @@
     <string name="title_other">Diğer</string>
     <string name="page_order_menu">Menü</string>
     <string name="page_order_info">Restorant Bilgisi</string>
+
+    <string name="welcome">Restoranta hoşgeldiniz!</string>
 </resources>

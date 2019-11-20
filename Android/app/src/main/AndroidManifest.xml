@@ -3,7 +3,7 @@
     package="net.muslu.mros">
 
     <uses-permission android:name="android.permission.CAMERA" />
-
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,14 +14,16 @@
         <activity
             android:name=".Screens.Order.MainPage"
             android:label="@string/page_order_menu">
+
+        </activity>
+        <activity android:name=".Screens.BarcodeRead" android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".Screens.StartupScreen.EnterRestaurant" android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Screens.BarcodeRead" />
-        <activity android:name=".Screens.StartupScreen.EnterRestaurant" />
         <activity android:name=".Screens.MainActivity"></activity>
     </application>
 

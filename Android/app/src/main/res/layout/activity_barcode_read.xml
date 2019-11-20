@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="?attr/actionBarSize"
     tools:context=".Screens.BarcodeRead">
 
     <TextView
@@ -12,7 +11,7 @@
         android:layout_height="50dp"
         app:layout_constraintBottom_toTopOf="@+id/camera"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@color/colorAccent"
+        android:background="@color/colorPrimary"
         android:textColor="@android:color/white"
         android:text="Masadaki barkodu okutunuz"
         android:textSize="20dp"

@@ -1,59 +1,64 @@
 package net.muslu.mros.Models;
 
-public class Restaurant {
-    protected int ID;
-    protected String FullName;
-    protected String Address;
-    protected String Phone;
-    protected String Logo;
-    protected String Information;
+import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
+
+public class Restaurant implements Serializable {
+
+    protected int id;
+    protected String fullName;
+    protected String address;
+    protected String phone;
+    protected String logo;
+    protected String information;
     //protected LatLng Coordinate;
 
     public int getID() {
-        return ID;
+        return id;
     }
 
     public void setID(int ID) {
-        this.ID = ID;
+        this.id = ID;
     }
 
     public String getFullName() {
-        return FullName;
+        return fullName;
     }
 
     public void setFullName(String fullName) {
-        FullName = fullName;
+        fullName = fullName;
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
     public void setAddress(String address) {
-        Address = address;
+        address = address;
     }
 
     public String getPhone() {
-        return Phone;
+        return phone;
     }
 
     public void setPhone(String phone) {
-        Phone = phone;
+        phone = phone;
     }
 
     public String getLogo() {
-        return Logo;
+        return logo;
     }
 
     public void setLogo(String logo) {
-        Logo = logo;
+        logo = logo;
     }
 
     public String getInformation() {
-        return Information;
+        return information;
     }
 
     public void setInformation(String information) {
-        Information = information;
+        information = information;
     }
 }
