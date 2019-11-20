@@ -66,13 +66,13 @@ public class BarcodeRead extends AppCompatActivity implements ZXingScannerView.R
 
     }
 
-    protected class FetchRestaurant extends AsyncTask<Object, Object, Restaurant> {
+    protected class FetchRestaurant extends AsyncTask<String, Object, Restaurant> {
         @Override
-        protected Restaurant doInBackground(Object... strings) {
+        protected Restaurant doInBackground(String... strings) {
             Restaurant restaurant = null;
             try{
                 String jsonObject = HtmlProcces.getJsonData
-                        (LinkHelper.GetLink(strings[0].toString(), LinkHelper.LinkType.FETCH_RESTAURANT_WITH_TABLE),
+                        (LinkHelper.GetLink(strings[0], LinkHelper.LinkType.FETCH_RESTAURANT_WITH_TABLE),
                                 "QR_TABLE");
                 Log.v("JSON_OUTPUT", jsonObject);
                 Gson gson= new GsonBuilder().create();

@@ -14,8 +14,9 @@ public final class LinkHelper {
                 result= API_URI + "category/restaurant/" +qrcode;
                 break;
             case LIST_PRODUCTS:
-                result= API_URI + "product/category"+ qrcode;
+                result= API_URI + "product/categoryProducts/"+ qrcode;
                 break;
+
         }
         Log.v("URL_OUTPUT", result);
         return result;

@@ -3,10 +3,10 @@ package net.muslu.mros.Models;
 import java.util.List;
 
 public class Product {
-    protected int ID;
-    protected String Name;
-    protected double Price;
-    protected String IMG;
+    protected int id;
+    protected String name;
+    protected double price;
+    protected String img;
     protected boolean isPortionable;
     protected List<Portion> portions;
 
@@ -20,35 +20,35 @@ public class Product {
     }
 
     public int getID() {
-        return ID;
+        return id;
     }
 
     public void setID(int ID) {
-        this.ID = ID;
+        this.id = ID;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        name = name;
     }
 
     public double getPrice() {
-        return Price;
+        return price;
     }
 
     public void setPrice(double price) {
-        Price = price;
+        price = price;
     }
 
     public String getIMG() {
-        return IMG;
+        return img;
     }
 
     public void setIMG(String IMG) {
-        this.IMG = IMG;
+        this.img = IMG;
     }
 
     public boolean isPortionable() {

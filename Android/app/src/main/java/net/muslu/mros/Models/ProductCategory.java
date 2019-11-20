@@ -4,9 +4,9 @@ import java.util.List;
 
 public class ProductCategory {
     protected int id;
-    protected String CatName;
-    protected String CatIMG;
-    protected boolean Status;
+    protected String catName;
+    protected String catIMG;
+    protected boolean status;
     protected int counter;
     protected List<Product> products;
 
@@ -27,27 +27,27 @@ public class ProductCategory {
     }
 
     public String getCatName() {
-        return CatName;
+        return catName;
     }
 
     protected void setCatName(String catName) {
-        CatName = catName;
+        catName = catName;
     }
 
     public String getCatIMG() {
-        return CatIMG;
+        return catIMG;
     }
 
     protected void setCatIMG(String catIMG) {
-        CatIMG = catIMG;
+        catIMG = catIMG;
     }
 
     public boolean isStatus() {
-        return Status;
+        return status;
     }
 
     protected void setStatus(boolean status) {
-        Status = status;
+        status = status;
     }
 
     public int getCounter() {
@@ -62,7 +62,7 @@ public class ProductCategory {
         return products;
     }
 
-    protected void setProducts(List<Product> products) {
+    public void setProducts(List<Product> products) {
         this.products = products;
     }
 }

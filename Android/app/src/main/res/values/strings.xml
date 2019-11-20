@@ -8,4 +8,7 @@
     <string name="page_order_info">Restorant Bilgisi</string>
 
     <string name="welcome">Restoranta hoşgeldiniz!</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

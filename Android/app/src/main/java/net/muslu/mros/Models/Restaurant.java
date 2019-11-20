@@ -14,6 +14,16 @@ public class Restaurant implements Serializable {
     protected String information;
     //protected LatLng Coordinate;
 
+
+    public Restaurant(int id, String fullName, String address, String phone, String logo, String information) {
+        this.id = id;
+        this.fullName = fullName;
+        this.address = address;
+        this.phone = phone;
+        this.logo = logo;
+        this.information = information;
+    }
+
     public int getID() {
         return id;
     }
