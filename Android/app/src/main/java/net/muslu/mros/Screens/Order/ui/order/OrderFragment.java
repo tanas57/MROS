@@ -24,13 +24,13 @@ public class OrderFragment extends Fragment {
         orderViewModel =
                 ViewModelProviders.of(this).get(OrderViewModel.class);
         View root = inflater.inflate(R.layout.order_fragment, container, false);
-        final TextView textView = root.findViewById(R.id.textView2);
+        /*final TextView textView = root.findViewById(R.id.textView2);
         orderViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
             }
-        });
+        });*/
         return root;
     }
 

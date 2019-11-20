@@ -8,13 +8,13 @@
     <fragment
         android:id="@+id/navigation_order"
         android:name="net.muslu.mros.Screens.Order.ui.order.OrderFragment"
-        android:label="@string/title_home"
+        android:label="@string/title_order"
         tools:layout="@layout/order_fragment" />
 
     <fragment
         android:id="@+id/navigation_basket"
         android:name="net.muslu.mros.Screens.Order.ui.basket.BasketFragment"
-        android:label="@string/title_home"
+        android:label="@string/title_basket"
         tools:layout="@layout/basket_fragment" />
 
     <fragment
