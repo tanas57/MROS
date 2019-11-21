@@ -6,21 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".Screens.BarcodeRead">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/camera"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:background="@color/colorPrimary"
-        android:textColor="@android:color/white"
-        android:text="Masadaki barkodu okutunuz"
-        android:textSize="20dp"
-        android:padding="7dp"
-        android:gravity="center"
-        app:layout_constraintStart_toStartOf="parent" />
     <FrameLayout
         android:id="@+id/camera"
-        android:layout_marginTop="50dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"

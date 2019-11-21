@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/holo_blue_dark">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:scrollbars="vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/PackageBarcode"
+            android:layout_width="30dp"
+            android:minHeight="30dp"
+            android:layout_margin="5dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_add_circle_outline_black_64dp" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/CustomerName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Product name Here"
+                android:textSize="15dp"
+                android:layout_margin="7dp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/CustomerAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:text="product contentsproduct contentsproduct contentsproduct contentsproduct contentsproduct contentsproduct contents"
+                android:layout_marginBottom="3dp"
+                android:textColor="@android:color/black"
+                android:textSize="13dp" />
+        </LinearLayout>
+        <TextView
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="100.00 TL"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="3dp"
+        android:background="@android:color/darker_gray"/>
+</LinearLayout>
+</androidx.cardview.widget.CardView>
