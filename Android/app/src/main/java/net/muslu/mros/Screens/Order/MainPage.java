@@ -1,5 +1,6 @@
 package net.muslu.mros.Screens.Order;
 
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -42,7 +43,7 @@ public class MainPage extends AppCompatActivity {
     protected void setRestaurant(Restaurant restaurant) {
         this.restaurant = restaurant;
     }
-
+    protected ProgressDialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +57,7 @@ public class MainPage extends AppCompatActivity {
         else{
             setRestaurant(new Restaurant(1, "Göl Pastanesi","Yabancı diller fakültesi kampüsü yakını","2325553322",null,"Ekmek ve unlu mamuller, tatlı vs."));
         }
+        dialog = new ProgressDialog(MainPage.this);
         new GetCategories().execute();
         result = findViewById(R.id.result);
         BottomNavigationView navView = findViewById(R.id.nav_view);
@@ -70,6 +72,13 @@ public class MainPage extends AppCompatActivity {
     }
 
     protected class GetCategories extends AsyncTask<String, String, List<ProductCategory>>{
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            dialog.setCancelable(false);
+            dialog.show();
+        }
 
         @Override
         protected List<ProductCategory> doInBackground(String... strings) {
@@ -102,6 +111,7 @@ public class MainPage extends AppCompatActivity {
     }
     protected class GetProducts extends AsyncTask<List<ProductCategory>, String, List<ProductCategory>>{
 
+
         @Override
         protected List<ProductCategory> doInBackground(List<ProductCategory>... lists) {
             try{
@@ -131,6 +141,7 @@ public class MainPage extends AppCompatActivity {
         @Override
         protected void onPostExecute(List<ProductCategory> productCategories) {
             super.onPostExecute(productCategories);
+            dialog.hide();
             String rs = "";
             for (ProductCategory cat : productCategories){
                 if(cat.getProductCount()>0) {

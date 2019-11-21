@@ -3,6 +3,7 @@ package net.muslu.mros.Screens;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.AudioManager;
@@ -66,7 +67,20 @@ public class BarcodeRead extends AppCompatActivity implements ZXingScannerView.R
 
     }
 
+
+
     protected class FetchRestaurant extends AsyncTask<String, Object, Restaurant> {
+        ProgressDialog progressDialog = new ProgressDialog(BarcodeRead.this);
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog.setTitle(getString(R.string.connecting_server));
+            progressDialog.setCancelable(false);
+            progressDialog.setMessage(getString(R.string.fetching_restaurant));
+            progressDialog.show();
+        }
+
         @Override
         protected Restaurant doInBackground(String... strings) {
             Restaurant restaurant = null;
@@ -91,6 +105,7 @@ public class BarcodeRead extends AppCompatActivity implements ZXingScannerView.R
         @Override
         protected void onPostExecute(Restaurant s) {
             if(s.getID() > 0){
+                progressDialog.hide();
                 Intent main_page = new Intent(BarcodeRead.this, MainPage.class);
                 main_page.putExtra("restaurant", s);
                 startActivity(main_page);
