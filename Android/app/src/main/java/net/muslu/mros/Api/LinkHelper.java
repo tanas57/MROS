@@ -3,7 +3,7 @@ package net.muslu.mros.Api;
 import android.util.Log;
 
 public final class LinkHelper {
-    private static final String API_URI = "http://api.muslu.net/v1/";
+    private static final String API_URI = "https://mros.api.muslu.net/v1/";
     public static String GetLink(String qrcode, LinkType linkType){
         String result = "";
         switch (linkType){

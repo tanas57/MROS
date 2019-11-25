@@ -44,6 +44,18 @@ public class MainPage extends AppCompatActivity {
         this.restaurant = restaurant;
     }
     protected ProgressDialog dialog;
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        dialog.dismiss();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,11 +66,12 @@ public class MainPage extends AppCompatActivity {
         if( getIntent().getExtras() != null){
             setRestaurant((Restaurant)getIntent().getExtras().get("restaurant"));
         }
-        else{
-            setRestaurant(new Restaurant(1, "Göl Pastanesi","Yabancı diller fakültesi kampüsü yakını","2325553322",null,"Ekmek ve unlu mamuller, tatlı vs."));
-        }
+
+        setRestaurant(new Restaurant(1, "Göl Pastanesi","Yabancı diller fakültesi kampüsü yakını","2325553322",null,"Ekmek ve unlu mamuller, tatlı vs."));
+
         dialog = new ProgressDialog(MainPage.this);
         new GetCategories().execute();
+
         result = findViewById(R.id.result);
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
@@ -110,7 +123,6 @@ public class MainPage extends AppCompatActivity {
         }
     }
     protected class GetProducts extends AsyncTask<List<ProductCategory>, String, List<ProductCategory>>{
-
 
         @Override
         protected List<ProductCategory> doInBackground(List<ProductCategory>... lists) {
