@@ -39,7 +39,6 @@ public class MainPage extends AppCompatActivity {
     protected Restaurant getRestaurant() {
         return restaurant;
     }
-    private TextView result;
     protected void setRestaurant(Restaurant restaurant) {
         this.restaurant = restaurant;
     }
@@ -72,7 +71,7 @@ public class MainPage extends AppCompatActivity {
         dialog = new ProgressDialog(MainPage.this);
         new GetCategories().execute();
 
-        result = findViewById(R.id.result);
+        //result = findViewById(R.id.result);
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -163,7 +162,7 @@ public class MainPage extends AppCompatActivity {
                     }
                 }
             }
-            result.setText(rs);
+            //result.setText(rs);
         }
     }
 
