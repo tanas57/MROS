@@ -20,44 +20,52 @@ import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
 
+import net.muslu.mros.Models.ProductCategory;
 import net.muslu.mros.R;
 import net.muslu.mros.Screens.Order.ui.order.tabmenu.OrderPagerAdapter;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class OrderFragment extends Fragment {
 
     private OrderViewModel orderViewModel;
-
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         orderViewModel = ViewModelProviders.of(this).get(OrderViewModel.class);
+
         View root = inflater.inflate(R.layout.order_fragment, container, false);
 
-        TabLayout tabLayout = root.findViewById(R.id.tabmenubar);
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.page_order_menu));
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.page_order_info));
-        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        Bundle bundle = getArguments();
+        if(bundle != null){
+            TabLayout tabLayout = root.findViewById(R.id.tabmenubar);
+            tabLayout.addTab(tabLayout.newTab().setText(R.string.page_order_menu));
+            tabLayout.addTab(tabLayout.newTab().setText(R.string.page_order_info));
+            tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        final ViewPager viewPager = root.findViewById(R.id.view_pager);
-        PagerAdapter pagerAdapter = new OrderPagerAdapter(getChildFragmentManager(), tabLayout.getTabCount());
-        viewPager.setAdapter(pagerAdapter);
+            final ViewPager viewPager = root.findViewById(R.id.view_pager);
+            PagerAdapter pagerAdapter = new OrderPagerAdapter(getChildFragmentManager(), tabLayout.getTabCount(), bundle);
+            viewPager.setAdapter(pagerAdapter);
 
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
-            }
+            viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+            tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+                @Override
+                public void onTabSelected(TabLayout.Tab tab) {
+                    viewPager.setCurrentItem(tab.getPosition());
+                }
 
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
+                @Override
+                public void onTabUnselected(TabLayout.Tab tab) {
 
-            }
+                }
 
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
+                @Override
+                public void onTabReselected(TabLayout.Tab tab) {
 
-            }
-        });
+                }
+            });
+        }
+
+
 
 
         return root;
