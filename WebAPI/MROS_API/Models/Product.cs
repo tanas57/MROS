@@ -16,5 +16,6 @@ namespace MROS_API.Models
         public Restaurant Restaurant { get; set; }
         public ProductCategory ProductCategory { get; set; }
         public bool IsPortionable { get; set; }
+        public int Preparation { get; set; }
     }
 }

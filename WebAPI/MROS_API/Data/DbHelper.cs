@@ -40,6 +40,10 @@ namespace MROS_API.Data
                 context.Products.AddRange(products);
                 context.SaveChanges();
 
+                var feeds = GetUserFeeds(context).ToArray();
+                context.CustomerFeeds.AddRange(feeds);
+                context.SaveChanges();
+
 
             }
         }
@@ -47,7 +51,7 @@ namespace MROS_API.Data
         {
             List<Customer> customers = new List<Customer>()
             {
-                new Customer{ FullName = "Tayyip Muslu", Address = "Kuruçeşme Mah. 205/7 Sok. No 16/1 D 8 Buca/İzmir", 
+                new Customer{ FullName = "Tayyip Muslu", Address = "Kuruçeşme Mah. 205/7 Sok. No 16/1 D 8 Buca/İzmir",
                     Phone = "513213212", RegDateTime = DateTime.Now, Birhdate = new DateTime(1995,1,6),
                     Sex = true, OrderCount = 0, Status = true, ProfilePhoto = null},
                 new Customer{ FullName = "Enes Demirdere", Address = "Atatürk Mah Buca/İzmir",
@@ -73,7 +77,7 @@ namespace MROS_API.Data
             };
 
             return restaurants;
-            
+
         }
 
         public static Restaurant GetRestaurant(int id)
@@ -93,7 +97,7 @@ namespace MROS_API.Data
                 new Table(){ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 2), TableName = "Sağ Kısım 3", Status = true, },
                 new Table(){ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 3), TableName = "İçeri A-1", Status = true, },
                 new Table(){ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 3), TableName = "İçeri A-2", Status = true, },
-                new Table(){ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 3), TableName = "VIP1", Status = true, }
+                new Table(){ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 3), TableName = "SALON B1", Status = true, }
             };
             return tables;
         }
@@ -120,19 +124,53 @@ namespace MROS_API.Data
         {
             List<Product> products = new List<Product>()
             {
-                new Product{ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 1), Name = "Sade Poğaca", Price = 1.5, IsPortionable = false, ProductCategory = db.ProductCategories.FirstOrDefault(x=> x.ID == 1)},
-                new Product{ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 1), Name = "Kaşarlı Poğaca", Price = 1.75, IsPortionable = false, ProductCategory = db.ProductCategories.FirstOrDefault(x=> x.ID == 1)},
-                new Product{ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 1), Name = "Zeytinli Poğaca", Price = 1.5, IsPortionable = false, ProductCategory = db.ProductCategories.FirstOrDefault(x=> x.ID == 1)},
-                new Product{ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 1), Name = "Çilekli Dilim Pasta", Price = 9.50, IsPortionable = false, ProductCategory = db.ProductCategories.FirstOrDefault(x=> x.ID == 2)},
-                new Product{ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 1), Name = "Traliçe", Price = 8.75, IsPortionable = false, ProductCategory = db.ProductCategories.FirstOrDefault(x=> x.ID == 2)},
-                new Product{ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 2), Name = "Katık", Price = 10, IsPortionable = false, ProductCategory = db.ProductCategories.FirstOrDefault(x=> x.ID == 3)},
-                new Product{ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 2), Name = "Antakya Döner", Price = 10, IsPortionable = false, ProductCategory = db.ProductCategories.FirstOrDefault(x=> x.ID == 3)},
-                new Product{ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 2), Name = "İskenderun Döner", Price = 10, IsPortionable = false, ProductCategory = db.ProductCategories.FirstOrDefault(x=> x.ID == 3)},
-
+                new Product{ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 1), Name = "Sade Poğaca", Price = 1.5, IsPortionable = false, ProductCategory = db.ProductCategories.FirstOrDefault(x=> x.ID == 1), Preparation = 0},
+                new Product{ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 1), Name = "Kaşarlı Poğaca", Price = 1.75, IsPortionable = false, ProductCategory = db.ProductCategories.FirstOrDefault(x=> x.ID == 1), Preparation = 3},
+                new Product{ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 1), Name = "Zeytinli Poğaca", Price = 1.5, IsPortionable = false, ProductCategory = db.ProductCategories.FirstOrDefault(x=> x.ID == 1), Preparation = 3},
+                new Product{ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 1), Name = "Çilekli Dilim Pasta", Price = 9.50, IsPortionable = false, ProductCategory = db.ProductCategories.FirstOrDefault(x=> x.ID == 2), Preparation = 3},
+                new Product{ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 1), Name = "Traliçe", Price = 8.75, IsPortionable = false, ProductCategory = db.ProductCategories.FirstOrDefault(x=> x.ID == 2), Preparation = 3},
+                new Product{ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 1), Name = "Ekler", Price = 2.75, IsPortionable = false, ProductCategory = db.ProductCategories.FirstOrDefault(x=> x.ID == 2), Preparation = 3},
+                new Product{ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 1), Name = "4 Kişilik Pasta", Price = 27.5, IsPortionable = false, ProductCategory = db.ProductCategories.FirstOrDefault(x=> x.ID == 2), Preparation = 3},
+                new Product{ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 2), Name = "Katık", Price = 10, IsPortionable = false, ProductCategory = db.ProductCategories.FirstOrDefault(x=> x.ID == 4), Preparation = 2},
+                new Product{ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 2), Name = "Antakya Döner", Price = 10, IsPortionable = false, ProductCategory = db.ProductCategories.FirstOrDefault(x=> x.ID == 4), Preparation = 2},
+                new Product{ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 2), Name = "İskenderun Döner", Price = 10, IsPortionable = false, ProductCategory = db.ProductCategories.FirstOrDefault(x=> x.ID == 4), Preparation = 2},
+                new Product{ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 1), Name = "Boyoz", Price = 1.25, IsPortionable = false, ProductCategory = db.ProductCategories.FirstOrDefault(x=> x.ID == 1), Preparation = 0},
+                new Product{ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 1), Name = "Gevrek", Price = 1.5, IsPortionable = false, ProductCategory = db.ProductCategories.FirstOrDefault(x=> x.ID == 1), Preparation = 0},
+                new Product{ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 1), Name = "Su Böreği", Price = 3.35, IsPortionable = false, ProductCategory = db.ProductCategories.FirstOrDefault(x=> x.ID == 1), Preparation = 0},
+                new Product{ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 1), Name = "Dilim Pizza", Price = 4.5, IsPortionable = false, ProductCategory = db.ProductCategories.FirstOrDefault(x=> x.ID == 1), Preparation = 0},
+                new Product{ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 1), Name = "Kıymalı Börek", Price = 5.5, IsPortionable = false, ProductCategory = db.ProductCategories.FirstOrDefault(x=> x.ID == 1), Preparation = 0},
+                new Product{ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 1), Name = "Çay", Price = 2.5, IsPortionable = false, ProductCategory = db.ProductCategories.FirstOrDefault(x=> x.ID == 3), Preparation = 0},
+                new Product{ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 1), Name = "Duble Çay", Price = 3.5, IsPortionable = false, ProductCategory = db.ProductCategories.FirstOrDefault(x=> x.ID == 3), Preparation = 0},
+                new Product{ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 1), Name = "Neskafe", Price = 4.5, IsPortionable = false, ProductCategory = db.ProductCategories.FirstOrDefault(x=> x.ID == 3), Preparation = 3},
+                new Product{ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 1), Name = "Türk Kahvesi", Price = 7.5, IsPortionable = false, ProductCategory = db.ProductCategories.FirstOrDefault(x=> x.ID == 3), Preparation = 5},
+                new Product{ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 2), Name = "Küçük Ayran", Price = 1.5, IsPortionable = false, ProductCategory = db.ProductCategories.FirstOrDefault(x=> x.ID == 5), Preparation = 0},
+                new Product{ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 2), Name = "Büyük Ayran", Price = 2, IsPortionable = false, ProductCategory = db.ProductCategories.FirstOrDefault(x=> x.ID == 5), Preparation = 0},
+                new Product{ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 2), Name = "Kola", Price = 2.5, IsPortionable = false, ProductCategory = db.ProductCategories.FirstOrDefault(x=> x.ID == 5), Preparation = 0},
+                new Product{ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 2), Name = "Puding", Price = 3.5, IsPortionable = false, ProductCategory = db.ProductCategories.FirstOrDefault(x=> x.ID == 6), Preparation = 0},
+                new Product{ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 2), Name = "Kalburabastı", Price = 4, IsPortionable = false, ProductCategory = db.ProductCategories.FirstOrDefault(x=> x.ID == 6), Preparation = 0},
+                new Product{ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 2), Name = "Künefe", Price = 9.5, IsPortionable = false, ProductCategory = db.ProductCategories.FirstOrDefault(x=> x.ID == 6), Preparation = 20},
+                new Product{ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 3), Name = "Açık Pide", Price = 13.5, IsPortionable = false, ProductCategory = db.ProductCategories.FirstOrDefault(x=> x.ID == 7), Preparation = 20},
+                new Product{ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 3), Name = "Adana Kebap", Price = 17.5, IsPortionable = false, ProductCategory = db.ProductCategories.FirstOrDefault(x=> x.ID == 8), Preparation = 15},
+                new Product{ Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 3), Name = "Ayran", Price = 2.5, IsPortionable = false, ProductCategory = db.ProductCategories.FirstOrDefault(x=> x.ID == 9), Preparation = 0},
             };
             return products;
         }
 
-
+        public static List<CustomerFeedBack> GetUserFeeds(ProjectContext db)
+        {
+            List<CustomerFeedBack> customerFeeds = new List<CustomerFeedBack>()
+            {
+                new CustomerFeedBack(){ Owner = db.Customers.FirstOrDefault(x=> x.ID == 1),
+                    Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 1), ServiceTime = 9, RatingFlavor = 8,
+                    RatingService = 9, RatingWaiter = 7, Message = "Oldukça lezzetli ve çeşit bol olan bir restorant, sürekli tercihimiz olmaya devam ediyot" },
+                 new CustomerFeedBack(){ Owner = db.Customers.FirstOrDefault(x=> x.ID == 1),
+                    Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 1), ServiceTime = 5, RatingFlavor = 4,
+                    RatingService = 7, RatingWaiter = 7, Message = "Niyeyse bugün performanslarından memnun kalmadık. Sanırım ilişkimizi gözden geçirmemeiz gerekecek :)" },
+                                 new CustomerFeedBack(){ Owner = db.Customers.FirstOrDefault(x=> x.ID == 2),
+                    Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 1), ServiceTime = 9, RatingFlavor = 8,
+                    RatingService = 9, RatingWaiter = 7, Message = "Deneme yorum, ya pastane güzel emme pahalı.." },
+            };
+            return customerFeeds;
+        }
     }
 }

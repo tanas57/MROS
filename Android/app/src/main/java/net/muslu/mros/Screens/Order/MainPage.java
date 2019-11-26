@@ -80,11 +80,12 @@ public class MainPage extends AppCompatActivity {
 
         gson = new GsonBuilder().create();
 
+        setRestaurant(new Restaurant(1, "Göl Pastanesi","Yabancı diller fakültesi kampüsü yakını","2325553322",null,"Ekmek ve unlu mamuller, tatlı vs."));
+
         if( getIntent().getExtras() != null){
             setRestaurant((Restaurant)getIntent().getExtras().get("restaurant"));
         }
 
-        setRestaurant(new Restaurant(1, "Göl Pastanesi","Yabancı diller fakültesi kampüsü yakını","2325553322",null,"Ekmek ve unlu mamuller, tatlı vs."));
 
         dialog = new ProgressDialog(MainPage.this);
         orderFragment = new OrderFragment();

@@ -18,11 +18,7 @@
         <activity
             android:name=".Screens.Order.MainPage"
             android:label="@string/app_name">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".Screens.BarcodeRead"
@@ -30,7 +26,13 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".Screens.StartupScreen.EnterRestaurant"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".Screens.MainActivity" />
     </application>
 

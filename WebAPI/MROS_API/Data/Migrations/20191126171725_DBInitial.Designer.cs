@@ -10,14 +10,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MROS_API.Data.Migrations
 {
     [DbContext(typeof(ProjectContext))]
-    [Migration("20191106072057_InitialDB")]
-    partial class InitialDB
+    [Migration("20191126171725_DBInitial")]
+    partial class DBInitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.11-servicing-32099")
+                .HasAnnotation("ProductVersion", "2.1.14-servicing-32113")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -60,9 +60,15 @@ namespace MROS_API.Data.Migrations
 
                     b.Property<int?>("OwnerID");
 
-                    b.Property<double>("Rating");
+                    b.Property<double>("RatingFlavor");
+
+                    b.Property<double>("RatingService");
+
+                    b.Property<double>("RatingWaiter");
 
                     b.Property<int?>("RestaurantID");
+
+                    b.Property<double>("ServiceTime");
 
                     b.HasKey("ID");
 
@@ -126,6 +132,8 @@ namespace MROS_API.Data.Migrations
                     b.Property<bool>("IsPortionable");
 
                     b.Property<string>("Name");
+
+                    b.Property<int>("Preparation");
 
                     b.Property<double>("Price");
 

@@ -10,6 +10,7 @@ public class Product implements Serializable {
     protected String img;
     protected boolean isPortionable;
     protected List<Portion> portions;
+    protected int preparation;
 
     public Product(int ID, String name, double price, String IMG, boolean isPortionable, List<Portion> portions) {
         setID(ID);
@@ -67,4 +68,13 @@ public class Product implements Serializable {
     public void setPortions(List<Portion> portions) {
         this.portions = portions;
     }
+
+    public int getPreparation() {
+        return preparation;
+    }
+
+    public void setPreparation(int preparation) {
+        this.preparation = preparation;
+    }
+
 }

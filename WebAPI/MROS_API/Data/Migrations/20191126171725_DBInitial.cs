@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MROS_API.Data.Migrations
 {
-    public partial class InitialDB : Migration
+    public partial class DBInitial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -59,7 +59,10 @@ namespace MROS_API.Data.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     OwnerID = table.Column<int>(nullable: true),
                     RestaurantID = table.Column<int>(nullable: true),
-                    Rating = table.Column<double>(nullable: false),
+                    RatingService = table.Column<double>(nullable: false),
+                    RatingWaiter = table.Column<double>(nullable: false),
+                    RatingFlavor = table.Column<double>(nullable: false),
+                    ServiceTime = table.Column<double>(nullable: false),
                     Message = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -134,7 +137,8 @@ namespace MROS_API.Data.Migrations
                     IMG = table.Column<string>(nullable: true),
                     RestaurantID = table.Column<int>(nullable: true),
                     ProductCategoryID = table.Column<int>(nullable: true),
-                    IsPortionable = table.Column<bool>(nullable: false)
+                    IsPortionable = table.Column<bool>(nullable: false),
+                    Preparation = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
