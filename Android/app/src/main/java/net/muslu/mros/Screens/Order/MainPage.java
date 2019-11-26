@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,7 +13,10 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -24,6 +28,10 @@ import net.muslu.mros.Models.Product;
 import net.muslu.mros.Models.ProductCategory;
 import net.muslu.mros.Models.Restaurant;
 import net.muslu.mros.R;
+import net.muslu.mros.Screens.Order.ui.basket.BasketFragment;
+import net.muslu.mros.Screens.Order.ui.comment.CommentFragment;
+import net.muslu.mros.Screens.Order.ui.order.OrderFragment;
+import net.muslu.mros.Screens.Order.ui.other.OtherFragment;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -44,6 +52,11 @@ public class MainPage extends AppCompatActivity {
     }
     protected ProgressDialog dialog;
 
+    protected OrderFragment orderFragment;
+    protected CommentFragment commentFragment;
+    protected BasketFragment basketFragment;
+    protected OtherFragment otherFragment;
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -55,6 +68,11 @@ public class MainPage extends AppCompatActivity {
         super.onResume();
     }
 
+    protected void setFragment(Fragment fragment){
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
+        fragmentTransaction.commit();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,18 +87,50 @@ public class MainPage extends AppCompatActivity {
         setRestaurant(new Restaurant(1, "Göl Pastanesi","Yabancı diller fakültesi kampüsü yakını","2325553322",null,"Ekmek ve unlu mamuller, tatlı vs."));
 
         dialog = new ProgressDialog(MainPage.this);
+        orderFragment = new OrderFragment();
+        basketFragment = new BasketFragment();
+        commentFragment = new CommentFragment();
+        otherFragment = new OtherFragment();
+
         new GetCategories().execute();
 
         //result = findViewById(R.id.result);
-        BottomNavigationView navView = findViewById(R.id.nav_view);
+        final BottomNavigationView navView = findViewById(R.id.nav_view);
+
+        navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
+                switch (menuItem.getItemId()){
+                    case R.id.navigation_order:
+                        setFragment(orderFragment);
+                        return true;
+                    case R.id.navigation_basket:
+                        setFragment(basketFragment);
+                        return true;
+                    case R.id.navigation_comment:
+                        setFragment(commentFragment);
+                        return true;
+                    case R.id.navigation_other:
+                        setFragment(otherFragment);
+                        return true;
+                }
+
+
+                return false;
+            }
+        });
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
+        /*AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_order,R.id.navigation_basket,R.id.navigation_comment, R.id.navigation_other)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
+
+         */
     }
 
     protected class GetCategories extends AsyncTask<String, String, List<ProductCategory>>{
@@ -163,6 +213,12 @@ public class MainPage extends AppCompatActivity {
                 }
             }
             //result.setText(rs);
+
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("categories", (ArrayList<ProductCategory>) productCategories);
+            orderFragment.setArguments(bundle);
+            setFragment(orderFragment);
+
         }
     }
 

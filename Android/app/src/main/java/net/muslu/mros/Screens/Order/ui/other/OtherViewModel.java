@@ -10,7 +10,7 @@ public class OtherViewModel extends ViewModel {
 
     public OtherViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is dashboard fragment");
+        mText.setValue("This is other fragment");
     }
 
     public LiveData<String> getText() {

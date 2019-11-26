@@ -29,15 +29,13 @@ public class OrderFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        orderViewModel =
-                ViewModelProviders.of(this).get(OrderViewModel.class);
+        orderViewModel = ViewModelProviders.of(this).get(OrderViewModel.class);
         View root = inflater.inflate(R.layout.order_fragment, container, false);
 
         TabLayout tabLayout = root.findViewById(R.id.tabmenubar);
         tabLayout.addTab(tabLayout.newTab().setText(R.string.page_order_menu));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.page_order_info));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-
 
         final ViewPager viewPager = root.findViewById(R.id.view_pager);
         PagerAdapter pagerAdapter = new OrderPagerAdapter(getChildFragmentManager(), tabLayout.getTabCount());
@@ -60,15 +58,6 @@ public class OrderFragment extends Fragment {
 
             }
         });
-
-        /*final TextView textView = root.findViewById(R.id.textView2);
-        orderViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });*/
-
 
 
         return root;

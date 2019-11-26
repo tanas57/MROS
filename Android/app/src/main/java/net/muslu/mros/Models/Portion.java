@@ -1,6 +1,8 @@
 package net.muslu.mros.Models;
 
-public class Portion {
+import java.io.Serializable;
+
+public class Portion implements Serializable {
     protected int ID;
     protected String PortionName;
     protected double Cost;

@@ -1,8 +1,9 @@
 package net.muslu.mros.Models;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class ProductCategory {
+public class ProductCategory implements Serializable {
     protected int id;
     protected String catName;
     protected String catIMG;
