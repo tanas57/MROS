@@ -13,4 +13,6 @@
     <string name="fetching_restaurant">Restorant bilgisine ulaşılıyor..</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="medium_text">Medium text Medium text Medium text Medium text Medium text Medium text Medium text Medium text Medium text Medium text </string>
+    <string name="long_text">Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text </string>
 </resources>
