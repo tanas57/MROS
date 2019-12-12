@@ -212,6 +212,8 @@ namespace MROS_API.Data.Migrations
 
                     b.Property<string>("Phone");
 
+                    b.Property<string>("Photo");
+
                     b.Property<bool>("Status");
 
                     b.Property<double>("TotalGain");

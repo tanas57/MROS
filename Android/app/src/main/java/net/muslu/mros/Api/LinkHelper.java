@@ -13,6 +13,9 @@ public final class LinkHelper {
             case LIST_PRODUCT_CATEGORIES:
                 result= API_URI + "category/restaurant/" +qrcode;
                 break;
+            case RESTAURANT_IMG:
+                result= API_URI + "restaurant/image/" +qrcode; // id
+                break;
             case LIST_PRODUCTS:
                 result= API_URI + "product/categoryProducts/"+ qrcode;
                 break;
@@ -25,6 +28,7 @@ public final class LinkHelper {
     public enum LinkType{
         FETCH_RESTAURANT_WITH_TABLE,
         LIST_PRODUCT_CATEGORIES,
-        LIST_PRODUCTS
+        LIST_PRODUCTS,
+        RESTAURANT_IMG
     }
 }

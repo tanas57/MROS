@@ -1,5 +1,8 @@
 package net.muslu.mros.Screens.Order.ui.order.tabmenu;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -7,19 +10,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import net.muslu.mros.Models.ProductCategory;
+import net.muslu.mros.Api.LinkHelper;
+import net.muslu.mros.Models.Restaurant;
+import net.muslu.mros.MrosData;
 import net.muslu.mros.R;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 
 public class RestaurantInformation extends Fragment {
+    MrosData mrosData;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -29,23 +35,28 @@ public class RestaurantInformation extends Fragment {
         ImageView photo = root.findViewById(R.id.restaurantPhoto);
         ListView info = root.findViewById(R.id.restaurantinfoList);
 
-        Bundle bundle = getArguments();
-        if(bundle != null){
+        mrosData = (MrosData)getActivity();
+        if(mrosData == null) Log.v("MROS DATA", "null data");
+        else {
+            Log.v("MROS DATA", mrosData.getCurrentRestaurant().getFullName());
+            Restaurant restaurant = mrosData.getCurrentRestaurant();
 
-            ArrayList<ProductCategory> categories = (ArrayList<ProductCategory>)bundle.getSerializable("categories");
-           
-        }else{
-            Log.v("RESTAURANT_MENU_BUNDLE", "NULL DATA");
+            ArrayList<RestaurantInfo> restaurantInfos = new ArrayList<>();
+            restaurantInfos.add(new RestaurantInfo(R.drawable.ic_phone, restaurant.getPhone()));
+            restaurantInfos.add(new RestaurantInfo(R.drawable.ic_location_on, restaurant.getAddress()));
+            restaurantInfos.add(new RestaurantInfo(R.drawable.ic_info_outline, restaurant.getInformation()));
+
+            RestaurantInfoAdapter restaurantInfoAdapter = new RestaurantInfoAdapter(getContext(),R.layout.order_section_information_list_layout, restaurantInfos);
+            info.setAdapter(restaurantInfoAdapter);
+
+            new DownloadImageTask((ImageView) photo)
+                    .execute(LinkHelper.GetLink(Integer.toString(restaurant.getID()), LinkHelper.LinkType.RESTAURANT_IMG));
         }
-
-        ArrayList<RestaurantInfo> restaurantInfos = new ArrayList<>();
-        restaurantInfos.add(new RestaurantInfo(R.drawable.ic_phone, ""));
-
 
         return root;
     }
 
-    private class RestaurantInfo{
+    public class RestaurantInfo{
         private int image;
         private String text;
 
@@ -68,6 +79,32 @@ public class RestaurantInformation extends Fragment {
 
         public void setText(String text) {
             this.text = text;
+        }
+    }
+    // show The Image in a ImageView
+
+    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+        ImageView bmImage;
+
+        public DownloadImageTask(ImageView bmImage) {
+            this.bmImage = bmImage;
+        }
+
+        protected Bitmap doInBackground(String... urls) {
+            String urldisplay = urls[0];
+            Bitmap mIcon11 = null;
+            try {
+                InputStream in = new java.net.URL(urldisplay).openStream();
+                mIcon11 = BitmapFactory.decodeStream(in);
+            } catch (Exception e) {
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
+            }
+            return mIcon11;
+        }
+
+        protected void onPostExecute(Bitmap result) {
+            bmImage.setImageBitmap(result);
         }
     }
 }

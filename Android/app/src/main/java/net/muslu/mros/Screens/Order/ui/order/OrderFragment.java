@@ -1,41 +1,35 @@
 package net.muslu.mros.Screens.Order.ui.order;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.Observer;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
-
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-
 import com.google.android.material.tabs.TabLayout;
-
-import net.muslu.mros.Models.ProductCategory;
 import net.muslu.mros.R;
 import net.muslu.mros.Screens.Order.ui.order.tabmenu.OrderPagerAdapter;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import net.muslu.mros.Screens.Order.ui.order.tabmenu.RestaurantInformation;
+import net.muslu.mros.Screens.Order.ui.order.tabmenu.RestaurantMenu;
 
 public class OrderFragment extends Fragment {
 
     private OrderViewModel orderViewModel;
+
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         orderViewModel = ViewModelProviders.of(this).get(OrderViewModel.class);
 
         View root = inflater.inflate(R.layout.order_fragment, container, false);
 
-        Bundle bundle = getArguments();
+        final RestaurantMenu restaurantMenu = new RestaurantMenu();
+        final RestaurantInformation restaurantInformation = new RestaurantInformation();
+
+        final Bundle bundle = getArguments();
         if(bundle != null){
             TabLayout tabLayout = root.findViewById(R.id.tabmenubar);
             tabLayout.addTab(tabLayout.newTab().setText(R.string.page_order_menu));
@@ -50,7 +44,9 @@ public class OrderFragment extends Fragment {
             tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
                 @Override
                 public void onTabSelected(TabLayout.Tab tab) {
+
                     viewPager.setCurrentItem(tab.getPosition());
+
                 }
 
                 @Override
@@ -64,11 +60,15 @@ public class OrderFragment extends Fragment {
                 }
             });
         }
-
-
-
+        else Log.v("ORDER FRAGMEN", "NULL BUNDLE");
 
         return root;
+    }
+
+    protected void setFragment(Fragment fragment){
+        FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.view_pager, fragment);
+        fragmentTransaction.commit();
     }
 
 }

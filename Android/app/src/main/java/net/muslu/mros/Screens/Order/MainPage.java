@@ -27,6 +27,7 @@ import net.muslu.mros.Api.LinkHelper;
 import net.muslu.mros.Models.Product;
 import net.muslu.mros.Models.ProductCategory;
 import net.muslu.mros.Models.Restaurant;
+import net.muslu.mros.MrosData;
 import net.muslu.mros.R;
 import net.muslu.mros.Screens.Order.ui.basket.BasketFragment;
 import net.muslu.mros.Screens.Order.ui.comment.CommentFragment;
@@ -40,7 +41,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class MainPage extends AppCompatActivity {
+public class MainPage extends AppCompatActivity implements MrosData {
 
     private Restaurant restaurant;
     private Gson gson;
@@ -56,6 +57,8 @@ public class MainPage extends AppCompatActivity {
     protected CommentFragment commentFragment;
     protected BasketFragment basketFragment;
     protected OtherFragment otherFragment;
+
+    protected List<ProductCategory> productCategories;
 
     @Override
     protected void onDestroy() {
@@ -86,6 +89,7 @@ public class MainPage extends AppCompatActivity {
             setRestaurant((Restaurant)getIntent().getExtras().get("restaurant"));
         }
 
+        setTitle(getRestaurant().getFullName() + " | " + getString(R.string.app_name));;
 
         dialog = new ProgressDialog(MainPage.this);
         orderFragment = new OrderFragment();
@@ -132,6 +136,11 @@ public class MainPage extends AppCompatActivity {
         NavigationUI.setupWithNavController(navView, navController);
 
          */
+    }
+
+    @Override
+    public Restaurant getCurrentRestaurant() {
+        return getRestaurant();
     }
 
     protected class GetCategories extends AsyncTask<String, String, List<ProductCategory>>{
@@ -215,6 +224,7 @@ public class MainPage extends AppCompatActivity {
             }
             //result.setText(rs);
 
+            setProductCategories(productCategories);
             Bundle bundle = new Bundle();
             bundle.putSerializable("categories", (ArrayList<ProductCategory>) productCategories);
             orderFragment.setArguments(bundle);
@@ -222,5 +232,16 @@ public class MainPage extends AppCompatActivity {
 
         }
     }
+    public List<ProductCategory> getProductCategories() {
+        return productCategories;
+    }
 
+    public void setProductCategories(List<ProductCategory> productCategories) {
+        this.productCategories = productCategories;
+    }
+
+    @Override
+    public ArrayList<ProductCategory> getCurrentProductCategories() {
+        return (ArrayList)getProductCategories();
+    }
 }

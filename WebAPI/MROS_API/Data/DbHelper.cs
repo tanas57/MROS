@@ -65,15 +65,24 @@ namespace MROS_API.Data
         {
             List<Restaurant> restaurants = new List<Restaurant>()
             {
-                new Restaurant(){FullName = "Göl Pastanesi", Address = "Yabancı diller fakültesi kampüsü yakını",
-                                 Information = "Ekmek ve unlu mamuller, tatlı vs.", Latitude = 37.0001, Longitude = 27.0002,
-                                 Status = true, TotalGain = 0, OrderCount = 0, Phone = "2325553322"},
-                new Restaurant(){FullName = "Katık", Address = "Göl pastanesi yanı antakya dönercisi",
-                                 Information = "Hatay ve antakya usulü döner yiyebileceğiniz mekan.", Latitude = 37.0001, Longitude = 27.0002,
-                                 Status = true, TotalGain = 0, OrderCount = 0, Phone = "2325553333"},
+                new Restaurant(){FullName = "Göl Pastanesi", Address = "Adatepe, Kıbrıs Cd. No:34, 35400 Buca/İzmir | Yabancı diller fakültesi kampüsü yakını",
+                                 Information = @"Pelit ailesi yıllar önce Rize Çamlıhemşin’den Kırım’a çalışmaya gitti. Bölge, pastacılıkta çok ünlüydü. Pastacılığın bütün inceliklerini öğrendikten sonra kendi pastane zincirini kurdu. Ancak Bolşevik İhtilali ile birlikte memleketleri Rize’ye geri döndüler.
+
+1946’da gittikleri Zonguldak’ta Balkaya Pastanesi’nde çalışmaya başladılar ve kısa bir süre sonra pastanenin işletmesini aldılar. Pastacılığın inceliklerini İstanbul’daki Moskova Pastanesi’nin yetişmiş ustalarından öğrendiler. Zonguldak’ın ardından atılımları için 1954’te İzmir’i tercih ettiler. İzmir Kıbrıs Şehitleri Caddesi’nde önce Ülkü Pastanesi’ni açan Pelit ailesi, 1957 yılında da Sevinç Pastanesi’ni açtılar.
+
+Türkiye’nin çeşitli şehirlerinden en meşhur pasta, şekerleme, tatlı ustalarını transfer ederek; izmirlileri, baton muzlu pasta, çilekli pasta, turta, kestane şekeri, meyve şekerlemeleri, badem kurabiyesi, dilim pasta, krem şanti ve meyveli pasta gibi yeni lezzetlerle tanıştırdılar. İzmirliler tarafından büyük ilgi gören Sevinç Pastanesi, İzmir’in sembolü ve buluşma noktası haline geldi.
+
+Günümüzde ailenin ikinci ve üçüncü kuşakları aldıkları bayrağı yeni lezzetler de katarak geleceğe taşımaktadırlar.
+
+Türkiye’nin neresine gidilirse gidilsin mutlaka Sevinç lezzetlerini tatmış biri vardır.", Latitude = 37.0001, Longitude = 27.0002,
+                                 Status = true, TotalGain = 0, OrderCount = 0, Phone = "0 232 555 3322", Photo = "gol-pastanesi.jpg"},
+                new Restaurant(){FullName = "Katık", Address = "Adatepe, Kıbrıs Cd. No:32A, 35400 Buca/İzmir | Göl pastanesi yanı antakya dönercisi",
+                                 Information = @"İskenderun döneri antakya döneriyle en fazla akraba olabilir, o da uzaktan. antakya dönerinde yediğiniz dönerden tat alırsınız, iskenderun dönerinde ise antakya dönerinde olmayan yeşillik vardır bol bol. o gevrek ekmeğin içinde dürüm şeklinde gelen döneri yedikten sonra normal ekmek arası döneri canınız bile çekmez. çünkü yavan gelir size. hatta otobüsle antakyadan getirtmişiğim bile vardır. zaman zaman kadınların bişeyleri aşermesi gibi canımın çektiği olur, ankarada pıtırak gibi çoğalan iskenderun döneri yenerek nefs kandırılmaya çalışılır ancak henüz başarılamamıştır. illa bi kulp takarsınız. neticede ne karnınız doyar ne gözünüz, içinizden söverek çıkarsınız mekandan. antakyaya girerken -hala ordamıdır bilmem- eğitim fakültesinin olduğu yerin yakınındaki tadım döner'in şişman döner ustasına selam ederim.
+", Latitude = 37.0001, Longitude = 27.0002,
+                                 Status = true, TotalGain = 0, OrderCount = 0, Phone = "0 232 555 3333", Photo = "katik.jpg"},
                 new Restaurant(){FullName = "Gözde Pide", Address = "Hoca Ahmet Yesevi Caddesi Buca İzmir",
-                                 Information = "Lahmacun, pide ve kebap mekanı", Latitude = 37.0001, Longitude = 27.0002,
-                                 Status = true, TotalGain = 0, OrderCount = 0, Phone = "2325551111"}
+                                 Information = "Lahmacun, pide ve kebap mekanı Lahmacun, pide ve kebap mekanı Lahmacun, pide ve kebap mekanı Lahmacun, pide ve kebap mekanı Lahmacun, pide ve kebap mekanı Lahmacun, pide ve kebap mekanı Lahmacun, pide ve kebap mekanı Lahmacun, pide ve kebap mekanı Lahmacun, pide ve kebap mekanı ", Latitude = 37.0001, Longitude = 27.0002,
+                                 Status = true, TotalGain = 0, OrderCount = 0, Phone = "0 232 555 1111", Photo = "gozde.jpg"}
             };
 
             return restaurants;
@@ -163,12 +172,21 @@ namespace MROS_API.Data
                 new CustomerFeedBack(){ Owner = db.Customers.FirstOrDefault(x=> x.ID == 1),
                     Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 1), ServiceTime = 9, RatingFlavor = 8,
                     RatingService = 9, RatingWaiter = 7, Message = "Oldukça lezzetli ve çeşit bol olan bir restorant, sürekli tercihimiz olmaya devam ediyot" },
-                 new CustomerFeedBack(){ Owner = db.Customers.FirstOrDefault(x=> x.ID == 1),
+                new CustomerFeedBack(){ Owner = db.Customers.FirstOrDefault(x=> x.ID == 1),
                     Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 1), ServiceTime = 5, RatingFlavor = 4,
                     RatingService = 7, RatingWaiter = 7, Message = "Niyeyse bugün performanslarından memnun kalmadık. Sanırım ilişkimizi gözden geçirmemeiz gerekecek :)" },
-                                 new CustomerFeedBack(){ Owner = db.Customers.FirstOrDefault(x=> x.ID == 2),
+                new CustomerFeedBack(){ Owner = db.Customers.FirstOrDefault(x=> x.ID == 1),
                     Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 1), ServiceTime = 9, RatingFlavor = 8,
                     RatingService = 9, RatingWaiter = 7, Message = "Deneme yorum, ya pastane güzel emme pahalı.." },
+                new CustomerFeedBack(){ Owner = db.Customers.FirstOrDefault(x=> x.ID == 2),
+                    Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 2), ServiceTime = 9, RatingFlavor = 8,
+                    RatingService = 9, RatingWaiter = 7, Message = "antakyadan gelen lezetler.. gayet doyurucu ve ekonomik öğrenci dostu beğenerek yiyoruz." },
+                new CustomerFeedBack(){ Owner = db.Customers.FirstOrDefault(x=> x.ID == 1),
+                    Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 2), ServiceTime = 5, RatingFlavor = 4,
+                    RatingService = 7, RatingWaiter = 7, Message = "Katık yorum Katık yorum Katık yorum Katık yorum Katık yorum Katık yorum Katık yorum Katık yorum Katık yorum Katık yorum Katık yorum Katık yorum Katık yorum Katık yorum Katık yorum Katık yorum Katık yorum Katık yorum " },
+                new CustomerFeedBack(){ Owner = db.Customers.FirstOrDefault(x=> x.ID == 2),
+                    Restaurant = db.Restaurants.FirstOrDefault(x=> x.ID == 2), ServiceTime = 9, RatingFlavor = 8,
+                    RatingService = 9, RatingWaiter = 7, Message = "Antakya adana usulu döner yedik içerisinden kıl çıktı hiç memnun kalmadık.. daha temiz ve titiz olmanızı talep ediyoruz bir kere daha şans vereceğiz umarım tekrar aynı şeyle karşılaşmayız." },
             };
             return customerFeeds;
         }

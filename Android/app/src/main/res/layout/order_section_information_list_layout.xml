@@ -15,13 +15,14 @@
         android:layout_margin="5dp"/>
 
     <TextView
+        android:layout_gravity="center"
         android:id="@+id/info_text"
         android:layout_weight="0.9"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/medium_text"
         android:paddingLeft="10dp"
-        android:textSize="15dp"
+        android:textSize="17dp"
         android:textIsSelectable="true"
         android:paddingTop="5dp"/>
 </LinearLayout>
