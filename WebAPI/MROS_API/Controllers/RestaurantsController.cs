@@ -67,6 +67,32 @@ namespace MROS_API.Controllers
             return File(image, "image/jpeg");
         }
 
+        // GET: api/Restaurants/5
+        [HttpGet("feeds/{id}")]
+        public async Task<IActionResult> GetFeeds([FromRoute] int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var restaurant = await _context.Restaurants.FindAsync(id);
+
+            if (restaurant == null)
+            {
+                return NotFound();
+            }
+
+            var feeds = await _context.CustomerFeeds.FirstOrDefaultAsync(x => x.Restaurant.ID == restaurant.ID);
+
+            if (feeds == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(feeds);
+        }
+
         // PUT: api/Restaurants/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutRestaurant([FromRoute] int id, [FromBody] Restaurant restaurant)

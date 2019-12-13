@@ -19,6 +19,9 @@ public final class LinkHelper {
             case LIST_PRODUCTS:
                 result= API_URI + "product/categoryProducts/"+ qrcode;
                 break;
+            case CUSTOMER_FEEDS:
+                result= API_URI + "product/categoryProducts/"+ qrcode;
+                break;
 
         }
         Log.v("URL_OUTPUT", result);
@@ -29,6 +32,7 @@ public final class LinkHelper {
         FETCH_RESTAURANT_WITH_TABLE,
         LIST_PRODUCT_CATEGORIES,
         LIST_PRODUCTS,
-        RESTAURANT_IMG
+        RESTAURANT_IMG,
+        CUSTOMER_FEEDS
     }
 }

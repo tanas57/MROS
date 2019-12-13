@@ -176,7 +176,7 @@ public class MainPage extends AppCompatActivity implements MrosData {
             try{
                 List<ProductCategory> categories = lists[0];
                 for(ProductCategory item : categories){
-                    Log.v("CAT_NAME => ", item.getCatName() + " ID => " + item.getId());
+                    //Log.v("CAT_NAME => ", item.getCatName() + " ID => " + item.getId());
                     List<Product> products = new ArrayList<Product>();
                     String jsonObject = HtmlProcces.getJsonData
                             (LinkHelper.GetLink(Integer.toString(item.getId()), LinkHelper.LinkType.LIST_PRODUCTS),
@@ -187,7 +187,7 @@ public class MainPage extends AppCompatActivity implements MrosData {
 
                         Product product = gson.fromJson(temp.toString(), Product.class);
                         products.add(product);
-                        Log.v("PRODUCT_NAME" , product.getName());
+                        //Log.v("PRODUCT_NAME" , product.getName());
                     }
                     item.setProducts(products);
                 }
