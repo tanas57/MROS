@@ -22,9 +22,7 @@ import net.muslu.mros.Api.LinkHelper;
 import net.muslu.mros.Models.Restaurant;
 import net.muslu.mros.R;
 import net.muslu.mros.Screens.Order.MainPage;
-
 import org.json.JSONObject;
-
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 public class BarcodeRead extends AppCompatActivity implements ZXingScannerView.ResultHandler {

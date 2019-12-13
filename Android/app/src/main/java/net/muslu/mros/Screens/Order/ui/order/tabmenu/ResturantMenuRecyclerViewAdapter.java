@@ -5,18 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import net.muslu.mros.Models.Product;
 import net.muslu.mros.Models.ProductCategory;
 import net.muslu.mros.R;
-
-
 import java.util.ArrayList;
-import java.util.List;
 
 public class ResturantMenuRecyclerViewAdapter extends RecyclerView.Adapter<ResturantMenuRecyclerViewAdapter.MyViewHolder> {
 

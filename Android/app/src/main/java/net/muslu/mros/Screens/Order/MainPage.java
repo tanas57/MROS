@@ -5,25 +5,16 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
 import net.muslu.mros.Api.HtmlProcces;
 import net.muslu.mros.Api.LinkHelper;
+import net.muslu.mros.Models.CustomerFeed;
 import net.muslu.mros.Models.Product;
 import net.muslu.mros.Models.ProductCategory;
 import net.muslu.mros.Models.Restaurant;
@@ -33,13 +24,10 @@ import net.muslu.mros.Screens.Order.ui.basket.BasketFragment;
 import net.muslu.mros.Screens.Order.ui.comment.CommentFragment;
 import net.muslu.mros.Screens.Order.ui.order.OrderFragment;
 import net.muslu.mros.Screens.Order.ui.other.OtherFragment;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class MainPage extends AppCompatActivity implements MrosData {
 
@@ -243,5 +231,10 @@ public class MainPage extends AppCompatActivity implements MrosData {
     @Override
     public ArrayList<ProductCategory> getCurrentProductCategories() {
         return (ArrayList)getProductCategories();
+    }
+
+    @Override
+    public ArrayList<CustomerFeed> getCurrentComments() {
+        return null;
     }
 }

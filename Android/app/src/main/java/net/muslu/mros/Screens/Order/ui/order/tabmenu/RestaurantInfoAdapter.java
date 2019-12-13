@@ -1,24 +1,16 @@
 package net.muslu.mros.Screens.Order.ui.order.tabmenu;
 
 import android.content.Context;
-import android.media.Image;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
 import net.muslu.mros.R;
-
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
 public class RestaurantInfoAdapter extends ArrayAdapter<RestaurantInformation.RestaurantInfo> {
 
         int resource;

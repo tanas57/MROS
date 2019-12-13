@@ -1,15 +1,10 @@
 package net.muslu.mros.Screens.Order.ui.order.tabmenu;
 
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-
-import net.muslu.mros.Models.ProductCategory;
-
-import java.util.ArrayList;
 
 public class OrderPagerAdapter extends FragmentPagerAdapter {
 

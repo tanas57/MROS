@@ -10,17 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
 import net.muslu.mros.Api.LinkHelper;
 import net.muslu.mros.Models.Restaurant;
 import net.muslu.mros.MrosData;
 import net.muslu.mros.R;
-
 import java.io.InputStream;
 import java.util.ArrayList;
 

@@ -5,16 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import net.muslu.mros.Models.Product;
 import net.muslu.mros.R;
-
-import org.w3c.dom.Text;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class CatProductDisplayAdapter extends RecyclerView.Adapter<CatProductDisplayAdapter.ProductViewHolder> {
