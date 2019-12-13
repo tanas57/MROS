@@ -20,7 +20,7 @@ public final class LinkHelper {
                 result= API_URI + "product/categoryProducts/"+ qrcode;
                 break;
             case CUSTOMER_FEEDS:
-                result= API_URI + "product/categoryProducts/"+ qrcode;
+                result= API_URI + "/feeds/restaurant/"+ qrcode; // id
                 break;
 
         }

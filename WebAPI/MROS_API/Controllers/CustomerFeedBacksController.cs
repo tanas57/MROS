@@ -56,7 +56,10 @@ namespace MROS_API.Controllers
                 return BadRequest(ModelState);
             }
 
-            var feeds = await _context.CustomerFeeds.Where(x => x.Restaurant.ID == id).ToListAsync();
+            var feeds = await _context.CustomerFeeds
+                .Include(y=> y.Owner)
+                .Include(z=> z.Restaurant)
+                .Where(x => x.Restaurant.ID == id).ToListAsync();
 
             if (feeds == null)
             {
