@@ -102,7 +102,7 @@ public class BarcodeRead extends AppCompatActivity implements ZXingScannerView.R
 
         @Override
         protected void onPostExecute(Restaurant s) {
-            if(s != null && s.getID() > 0){
+            if(s != null && s.getId() > 0){
                 progressDialog.hide();
                 Intent main_page = new Intent(BarcodeRead.this, MainPage.class);
                 main_page.putExtra("restaurant", s);

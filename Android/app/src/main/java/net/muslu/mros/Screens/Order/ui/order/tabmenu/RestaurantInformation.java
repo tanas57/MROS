@@ -46,7 +46,7 @@ public class RestaurantInformation extends Fragment {
             info.setAdapter(restaurantInfoAdapter);
 
             new DownloadImageTask((ImageView) photo)
-                    .execute(LinkHelper.GetLink(Integer.toString(restaurant.getID()), LinkHelper.LinkType.RESTAURANT_IMG));
+                    .execute(LinkHelper.GetLink(Integer.toString(restaurant.getId()), LinkHelper.LinkType.RESTAURANT_IMG));
         }
 
         return root;

@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import net.muslu.mros.Api.HtmlProcces;
 import net.muslu.mros.Api.LinkHelper;
@@ -50,6 +51,11 @@ public class CommentFragment extends Fragment {
                 ViewModelProviders.of(this).get(CommentViewModel.class);
         View root = inflater.inflate(R.layout.comment_fragment, container, false);
 
+        // 2019-12-13T00:14:34.7857092
+        gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss")
+                .create();
+
+
         comments = root.findViewById(R.id.comment);
         MrosData mrosData = (MrosData) getActivity();
         if(mrosData != null){
@@ -83,15 +89,13 @@ public class CommentFragment extends Fragment {
             ArrayList<CustomerFeed> customerFeeds = new ArrayList<>();
             try{
                 String jsonObject = HtmlProcces.getJsonData
-                        (LinkHelper.GetLink(Integer.toString(restaurant.getID()), LinkHelper.LinkType.CUSTOMER_FEEDS),
-                                "CUSTOMER FEEDS");
+                        (LinkHelper.GetLink(Integer.toString(restaurant.getId()), LinkHelper.LinkType.CUSTOMER_FEEDS),
+                                "CUSTOMER FEED JSON");
                 JSONArray rows = new JSONArray(jsonObject);
                 for(int i = 0; i < rows.length(); i++){
-                    JSONObject temp = rows.getJSONObject(i);
-                    Log.v("COMMENT JSON" , temp.toString());
-                    CustomerFeed productCategory = gson.fromJson(temp.toString(), CustomerFeed.class);
-                    customerFeeds.add(productCategory);
-                    //Log.v("COMMENT ID, RESTAURANT," , productCategory.getId() + " " + getRestaurant().getFullName());
+                    String temp = rows.get(i).toString();
+                    CustomerFeed cf = gson.fromJson(temp, CustomerFeed.class);
+                    customerFeeds.add(cf);
                 }
 
             }catch (Exception e){

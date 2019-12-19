@@ -5,27 +5,26 @@ import androidx.annotation.Nullable;
 import java.io.Serializable;
 
 public class CustomerFeed implements Serializable {
+
+    /*
+    {"id":1,
+    "owner":null,
+    "restaurant":null,
+    "ratingService":9,
+    "ratingWaiter":7,
+    "ratingFlavor":8,
+    "serviceTime":9,
+    "message":"Oldukça lezzetli ve çeşit bol olan bir restorant, sürekli tercihimiz olmaya devam ediyot"}
+
+     */
     protected int id;
-    @Nullable
     protected Customer owner;
-    @Nullable
     protected Restaurant restaurant;
     protected double ratingService;
     protected double ratingWaiter;
     protected double ratingFlavor;
     protected double serviceTime;
     protected String message;
-
-    public CustomerFeed(int id, Customer owner, Restaurant restaurant, double ratingService, double ratingWaiter, double ratingFlavor, double serviceTime, String message) {
-        this.id = id;
-        this.owner = owner;
-        this.restaurant = restaurant;
-        this.ratingService = ratingService;
-        this.ratingWaiter = ratingWaiter;
-        this.ratingFlavor = ratingFlavor;
-        this.serviceTime = serviceTime;
-        this.message = message;
-    }
 
     public int getId() {
         return id;
