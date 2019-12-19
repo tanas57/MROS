@@ -13,7 +13,15 @@ import androidx.annotation.Nullable;
 import net.muslu.mros.Models.CustomerFeed;
 import net.muslu.mros.R;
 
+import org.ocpsoft.prettytime.PrettyTime;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class CommentListviewAdapter extends ArrayAdapter<CustomerFeed> {
 
@@ -43,12 +51,25 @@ public class CommentListviewAdapter extends ArrayAdapter<CustomerFeed> {
         CustomerFeed current = feeds.get(position);
 
         name.setText(current.getOwner().getFullName());
-        point.setText( getContext().getString(R.string.comment_feed_flavor) + " " + current.getRatingFlavor() + " " +
-                            getContext().getString(R.string.comment_feed_service) + " " +current.getRatingService() + " " +
-                getContext().getString(R.string.comment_feed_waiter) + " " + " " + current.getRatingWaiter() + " " +
-                getContext().getString(R.string.comment_feed_flavor) + " " + current.getRatingWaiter());
+        point.setText( getContext().getString(R.string.comment_feed_flavor) + " " + (int)current.getRatingFlavor() + " " +
+                            getContext().getString(R.string.comment_feed_service) + " " + (int)current.getRatingService() + " " +
+                getContext().getString(R.string.comment_feed_waiter) + " " + " " + (int)current.getRatingWaiter() + " " +
+                getContext().getString(R.string.comment_feed_flavor) + " " + (int)current.getRatingWaiter());
         message.setText(current.getMessage());
-        date.setText(current);
+        PrettyTime p = new PrettyTime();
+        p.setLocale(new Locale("tr"));
+
+        String temp = current.getFeedDateTime();
+
+        Date d = null;
+
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            d = sdf.parse(temp);
+        }
+        catch (Exception e) { e.printStackTrace();}
+
+        date.setText(p.format(d));
         return convertView;
     }
 }

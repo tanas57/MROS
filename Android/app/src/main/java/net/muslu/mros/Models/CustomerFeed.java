@@ -3,6 +3,7 @@ package net.muslu.mros.Models;
 import androidx.annotation.Nullable;
 
 import java.io.Serializable;
+import java.time.LocalTime;
 
 public class CustomerFeed implements Serializable {
 
@@ -25,6 +26,7 @@ public class CustomerFeed implements Serializable {
     protected double ratingFlavor;
     protected double serviceTime;
     protected String message;
+    protected String feedDateTime;
 
     public int getId() {
         return id;
@@ -88,5 +90,13 @@ public class CustomerFeed implements Serializable {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public String getFeedDateTime() {
+        return feedDateTime;
+    }
+
+    public void setFeedDateTime(String feedDateTime) {
+        this.feedDateTime = feedDateTime;
     }
 }
