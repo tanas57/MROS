@@ -54,6 +54,8 @@ namespace MROS_API.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime>("FeedDateTime");
+
                     b.Property<string>("Message");
 
                     b.Property<int?>("OwnerID");

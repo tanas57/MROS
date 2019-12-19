@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MROS_API.Data.Migrations
 {
-    public partial class InitialDB : Migration
+    public partial class DBInitial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -64,7 +64,8 @@ namespace MROS_API.Data.Migrations
                     RatingWaiter = table.Column<double>(nullable: false),
                     RatingFlavor = table.Column<double>(nullable: false),
                     ServiceTime = table.Column<double>(nullable: false),
-                    Message = table.Column<string>(nullable: true)
+                    Message = table.Column<string>(nullable: true),
+                    FeedDateTime = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {

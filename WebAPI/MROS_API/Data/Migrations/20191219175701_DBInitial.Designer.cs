@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MROS_API.Data.Migrations
 {
     [DbContext(typeof(ProjectContext))]
-    [Migration("20191212211359_InitialDB")]
-    partial class InitialDB
+    [Migration("20191219175701_DBInitial")]
+    partial class DBInitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -55,6 +55,8 @@ namespace MROS_API.Data.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("FeedDateTime");
 
                     b.Property<string>("Message");
 
