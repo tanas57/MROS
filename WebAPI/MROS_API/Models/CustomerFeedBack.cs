@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace MROS_API.Models
 {
@@ -13,5 +14,6 @@ namespace MROS_API.Models
         public double RatingFlavor { get; set; }
         public double ServiceTime { get; set; }
         public string Message { get; set; }
+        public DateTime FeedDateTime { get; set; }
     }
 }

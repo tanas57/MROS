@@ -7,6 +7,10 @@
     <string name="title_other">Diğer</string>
     <string name="page_order_menu">Menü</string>
     <string name="page_order_info">Restorant Bilgisi</string>
+    <string name="comment_feed_waiter">Garson</string>
+    <string name="comment_feed_service">Servis</string>
+    <string name="comment_feed_speed">Hız</string>
+    <string name="comment_feed_flavor">Lezzet</string>
 
     <string name="welcome">Restoranta hoşgeldiniz!</string>
     <string name="connecting_server">Sunucu Bağlantısı</string>

@@ -32,16 +32,23 @@ public class CommentListviewAdapter extends ArrayAdapter<CustomerFeed> {
         LayoutInflater inflater = LayoutInflater.from(getContext());
         convertView = inflater.inflate(resource, parent, false);
 
-        TextView name = convertView.findViewById(R.id.comment_fullname);
-        TextView point = convertView.findViewById(R.id.comment_points);
+        ImageView image = convertView.findViewById(R.id.user_photo);
+        TextView name = convertView.findViewById(R.id.user_fullname);
+        TextView point = convertView.findViewById(R.id.comment_score);
+        TextView date = convertView.findViewById(R.id.comment_date);
         TextView message = convertView.findViewById(R.id.comment_message);
 
         //name.setText(feeds.get(position).getOwner().getFullname());
 
-        name.setText("kullanıcı bilgisi çek");
-        point.setText(feeds.get(position).getRatingFlavor() + " " + feeds.get(position).getRatingService()
-                + " " + feeds.get(position).getRatingWaiter() + " " + feeds.get(position).getRatingWaiter());
-        message.setText(feeds.get(position).getMessage());
+        CustomerFeed current = feeds.get(position);
+
+        name.setText(current.getOwner().getFullName());
+        point.setText( getContext().getString(R.string.comment_feed_flavor) + " " + current.getRatingFlavor() + " " +
+                            getContext().getString(R.string.comment_feed_service) + " " +current.getRatingService() + " " +
+                getContext().getString(R.string.comment_feed_waiter) + " " + " " + current.getRatingWaiter() + " " +
+                getContext().getString(R.string.comment_feed_flavor) + " " + current.getRatingWaiter());
+        message.setText(current.getMessage());
+        date.setText(current);
         return convertView;
     }
 }
