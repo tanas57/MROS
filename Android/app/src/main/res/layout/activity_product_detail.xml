@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,6 +7,7 @@
     tools:context=".Screens.Order.ui.order.ProductDetail">
 
     <LinearLayout
+        android:id="@+id/linear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -14,12 +15,14 @@
         >
 
         <TextView
+            android:id="@+id/product_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="15dp"
             android:textColor="@android:color/black"
             android:text="Product Name"/>
         <TextView
+            android:id="@+id/product_detail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="13dp"
@@ -40,12 +43,56 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
+            <Button
+                android:id="@+id/product_decrease"
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
+                android:textSize="40dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="-"/>
+            <Button
+                android:id="@+id/product_increase"
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
+                android:textSize="40dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="+"/>
 
-
+            <TextView
+                android:id="@+id/product_count"
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/num_of_product"
+                android:textSize="20dp"/>
 
         </LinearLayout>
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="15.50 TL"
+            android:textSize="30dp"
+            android:id="@+id/product_price"/>
+
+        <Button
+            android:id="@+id/product_add_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/add_basket"
+            android:background="@drawable/bg_green_button_radius"
+            android:textSize="20dp"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:layout_margin="20dp"/>
 
 
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

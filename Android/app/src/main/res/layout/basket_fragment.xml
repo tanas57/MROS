@@ -1,14 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Screens.Order.ui.basket.BasketFragment">
 
     <TextView
+        android:padding="10dp"
         android:id="@+id/textview3"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorBlack"
+        android:textSize="17dp"
+        android:text="@string/my_basket" />
 
-</FrameLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/user_basket"
+        android:layout_below="@id/textview3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="60dp"/>
+
+    <LinearLayout
+        android:background="@color/colorGreenn"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="60dp"
+        android:layout_height="60dp">
+
+        <TextView
+            android:id="@+id/basket_total_cost"
+            android:gravity="left|center"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:layout_width="0dp"
+            android:layout_weight="0.6"
+            android:paddingLeft="10dp"
+            android:layout_height="match_parent"
+            android:textColor="@android:color/white"
+            android:text="15.00 TL"/>
+
+        <Button
+            android:id="@+id/basket_ok"
+            android:textColor="@android:color/white"
+            android:textSize="20dp"
+            android:background="#3CB34F"
+            android:layout_width="0dp"
+            android:layout_weight="0.4"
+            android:layout_height="match_parent"
+            android:text="@string/basket_ok"/>
+    </LinearLayout>
+
+</RelativeLayout>

@@ -12,7 +12,12 @@
     <string name="comment_feed_service">Servis</string>
     <string name="comment_feed_speed">Hız</string>
     <string name="comment_feed_flavor">Lezzet</string>
-
+    <string name="num_of_product">adet</string>
+    <string name="add_basket">Sepete Ekle</string>
+    <string name="money_type">TL</string>
+    <string name="product_detail">Ürün Detayı</string>
+    <string name="my_basket">Sepetim</string>
+    <string name="basket_ok">Sepeti Onayla</string>
     <string name="welcome">Restoranta hoşgeldiniz!</string>
     <string name="connecting_server">Sunucu Bağlantısı</string>
     <string name="fetching_restaurant">Restorant bilgisine ulaşılıyor..</string>

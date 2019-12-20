@@ -1,10 +1,13 @@
 package net.muslu.mros.Screens.Order;
 
 import android.app.ProgressDialog;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Toast;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -14,6 +17,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import net.muslu.mros.Api.HtmlProcces;
 import net.muslu.mros.Api.LinkHelper;
+import net.muslu.mros.Data;
+import net.muslu.mros.Models.Basket;
 import net.muslu.mros.Models.CustomerFeed;
 import net.muslu.mros.Models.Product;
 import net.muslu.mros.Models.ProductCategory;
@@ -47,6 +52,9 @@ public class MainPage extends AppCompatActivity implements MrosData {
     protected OtherFragment otherFragment;
 
     protected List<ProductCategory> productCategories;
+    protected BottomNavigationView navView;
+    protected ArrayList<Product> products;
+    protected Basket basket;
 
     @Override
     protected void onDestroy() {
@@ -57,6 +65,15 @@ public class MainPage extends AppCompatActivity implements MrosData {
     @Override
     protected void onResume() {
         super.onResume();
+        Basket basket1 = Data.get(getApplicationContext());
+        if(basket1 != null) basket = basket1;
+
+        ArrayList<Product> products = basket.getProducts();
+
+        for (Product item : products) {
+
+            Log.v("BASKET", item.getName() + " " + item.getPreparation());
+        }
     }
 
     protected void setFragment(Fragment fragment){
@@ -69,13 +86,23 @@ public class MainPage extends AppCompatActivity implements MrosData {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
 
+        // initialize objects
         gson = new GsonBuilder().create();
+        products = new ArrayList<>();
+        basket = new Basket();
+
+        Data.set(basket, getApplicationContext());
 
         String res = "{\"id\":1,\"fullName\":\"Göl Pastanesi\",\"address\":\"Adatepe, Kıbrıs Cd. No:34, 35400 Buca/İzmir | Yabancı diller fakültesi kampüsü yakını\",\"phone\":\"0 232 555 3322\",\"logo\":null,\"photo\":\"gol-pastanesi.jpg\",\"information\":\"Pelit ailesi yıllar önce Rize Çamlıhemşin’den Kırım’a çalışmaya gitti. Bölge, pastacılıkta çok ünlüydü. Pastacılığın bütün inceliklerini öğrendikten sonra kendi pastane zincirini kurdu. Ancak Bolşevik İhtilali ile birlikte memleketleri Rize’ye geri döndüler.\\r\\n\\r\\n1946’da gittikleri Zonguldak’ta Balkaya Pastanesi’nde çalışmaya başladılar ve kısa bir süre sonra pastanenin işletmesini aldılar. Pastacılığın inceliklerini İstanbul’daki Moskova Pastanesi’nin yetişmiş ustalarından öğrendiler. Zonguldak’ın ardından atılımları için 1954’te İzmir’i tercih ettiler. İzmir Kıbrıs Şehitleri Caddesi’nde önce Ülkü Pastanesi’ni açan Pelit ailesi, 1957 yılında da Sevinç Pastanesi’ni açtılar.\\r\\n\\r\\nTürkiye’nin çeşitli şehirlerinden en meşhur pasta, şekerleme, tatlı ustalarını transfer ederek; izmirlileri, baton muzlu pasta, çilekli pasta, turta, kestane şekeri, meyve şekerlemeleri, badem kurabiyesi, dilim pasta, krem şanti ve meyveli pasta gibi yeni lezzetlerle tanıştırdılar. İzmirliler tarafından büyük ilgi gören Sevinç Pastanesi, İzmir’in sembolü ve buluşma noktası haline geldi.\\r\\n\\r\\nGünümüzde ailenin ikinci ve üçüncü kuşakları aldıkları bayrağı yeni lezzetler de katarak geleceğe taşımaktadırlar.\\r\\n\\r\\nTürkiye’nin neresine gidilirse gidilsin mutlaka Sevinç lezzetlerini tatmış biri vardır.\",\"latitude\":37.0001,\"longitude\":27.0002,\"status\":true,\"orderCount\":0,\"totalGain\":0.0}";
 
         setRestaurant(gson.fromJson(res, Restaurant.class));
 
-        CustomerFeed fd = gson.fromJson("{\"id\":1,\"owner\":null,\"restaurant\":null,\"ratingService\":9,\"ratingWaiter\":7,\"ratingFlavor\":8,\"serviceTime\":9,\"message\":\"Oldukça lezzetli ve çeşit bol olan bir restorant, sürekli tercihimiz olmaya devam ediyot\"} ", CustomerFeed.class);
+        //result = findViewById(R.id.result);
+        navView = findViewById(R.id.nav_view);
+
+        // navigation_basket
+
+        //navView.getOrCreateBadge(R.id.navigation_basket).setNumber(1);
 
         if( getIntent().getExtras() != null){
             setRestaurant((Restaurant)getIntent().getExtras().get("restaurant"));
@@ -90,9 +117,6 @@ public class MainPage extends AppCompatActivity implements MrosData {
         otherFragment = new OtherFragment();
 
         new GetCategories().execute();
-
-        //result = findViewById(R.id.result);
-        final BottomNavigationView navView = findViewById(R.id.nav_view);
 
         navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -117,17 +141,6 @@ public class MainPage extends AppCompatActivity implements MrosData {
                 return false;
             }
         });
-
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        /*AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_order,R.id.navigation_basket,R.id.navigation_comment, R.id.navigation_other)
-                .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        NavigationUI.setupWithNavController(navView, navController);
-
-         */
     }
 
     @Override
@@ -241,4 +254,11 @@ public class MainPage extends AppCompatActivity implements MrosData {
     public ArrayList<CustomerFeed> getCurrentComments() {
         return null;
     }
+
+    @Override
+    public Basket getBasket() {
+        return basket;
+    }
+
+
 }

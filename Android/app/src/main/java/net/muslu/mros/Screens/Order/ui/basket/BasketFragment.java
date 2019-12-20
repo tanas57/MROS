@@ -8,19 +8,30 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import net.muslu.mros.Data;
+import net.muslu.mros.Models.Basket;
+import net.muslu.mros.Models.Product;
 import net.muslu.mros.R;
 import net.muslu.mros.Screens.Order.ui.comment.CommentFragment;
+
+import java.util.ArrayList;
 
 public class BasketFragment extends Fragment {
 
     private BasketViewModel basketViewModel;
-
+    private RecyclerView user_basket;
+    private TextView total_cost;
     public static CommentFragment newInstance() {
         return new CommentFragment();
     }
@@ -31,14 +42,52 @@ public class BasketFragment extends Fragment {
         basketViewModel =
                 ViewModelProviders.of(this).get(BasketViewModel.class);
         View root = inflater.inflate(R.layout.basket_fragment, container, false);
-        final TextView textView = root.findViewById(R.id.textview3);
-        basketViewModel.getText().observe(this, new Observer<String>() {
+
+        user_basket = root.findViewById(R.id.user_basket);
+        user_basket.setLayoutManager(new LinearLayoutManager(getContext()));
+        getdata();
+
+        total_cost = root.findViewById(R.id.basket_total_cost);
+        Button ok = root.findViewById(R.id.basket_ok);
+
+        ok.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "your order : ", Toast.LENGTH_LONG).show();;
             }
         });
+
+
         return root;
     }
 
+    private void getdata(){
+        try{
+            Basket basket = Data.get(getContext());
+            Log.v("BASKET GET DATA", "TRY TO GET DATA");
+            if(basket != null) {
+                ArrayList<Product> products = basket.getProducts();
+                if (products.size() > 0) {
+                    Log.v("BASKET GET DATA", " NUM OF " + products.size());
+                    BasketAdapter basketAdapter = new BasketAdapter(getContext(), products, new BasketAdapter.ClickListener() {
+                        @Override
+                        public void onPositionClicked(View view, Product product, int pos) {
+
+                        }
+                    });
+                    user_basket.setAdapter(basketAdapter);
+                    String temp = basket.getTotalCost() + " TL";
+                    total_cost.setText(temp);
+                }
+            }
+        }
+        catch (Exception e){e.printStackTrace();}
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getdata();
+    }
 }

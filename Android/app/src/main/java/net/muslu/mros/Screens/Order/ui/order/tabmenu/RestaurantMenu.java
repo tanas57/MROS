@@ -27,7 +27,7 @@ public class RestaurantMenu extends Fragment {
         if(bundle != null){
 
             ArrayList<ProductCategory> categories = (ArrayList<ProductCategory>)bundle.getSerializable("categories");
-            restaurantMenu.setAdapter(new ResturantMenuRecyclerViewAdapter(getContext(), categories));
+            restaurantMenu.setAdapter(new ResturantMenuRecyclerViewAdapter(getContext().getApplicationContext(), categories));
             restaurantMenu.setLayoutManager(new LinearLayoutManager(getContext()));
             restaurantMenu.setHasFixedSize(false);
         }else{

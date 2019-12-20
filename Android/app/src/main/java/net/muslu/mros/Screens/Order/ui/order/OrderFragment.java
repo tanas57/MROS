@@ -14,8 +14,6 @@ import android.view.ViewGroup;
 import com.google.android.material.tabs.TabLayout;
 import net.muslu.mros.R;
 import net.muslu.mros.Screens.Order.ui.order.tabmenu.OrderPagerAdapter;
-import net.muslu.mros.Screens.Order.ui.order.tabmenu.RestaurantInformation;
-import net.muslu.mros.Screens.Order.ui.order.tabmenu.RestaurantMenu;
 
 public class OrderFragment extends Fragment {
 
@@ -25,9 +23,6 @@ public class OrderFragment extends Fragment {
         orderViewModel = ViewModelProviders.of(this).get(OrderViewModel.class);
 
         View root = inflater.inflate(R.layout.order_fragment, container, false);
-
-        final RestaurantMenu restaurantMenu = new RestaurantMenu();
-        final RestaurantInformation restaurantInformation = new RestaurantInformation();
 
         final Bundle bundle = getArguments();
         if(bundle != null){

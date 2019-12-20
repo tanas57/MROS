@@ -17,9 +17,4 @@
         android:icon="@drawable/ic_comment_black_64dp"
         android:title="@string/title_comment" />
 
-    <item
-        android:id="@+id/navigation_other"
-        android:icon="@drawable/ic_menu_black_64dp"
-        android:title="@string/title_other" />
-
 </menu>
