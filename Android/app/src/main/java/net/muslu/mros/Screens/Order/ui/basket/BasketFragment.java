@@ -72,7 +72,7 @@ public class BasketFragment extends Fragment {
             user_basket = root.findViewById(R.id.user_basket);
             user_basket.setLayoutManager(new LinearLayoutManager(getContext()));
 
-            ArrayList<Product> products = basket.getProducts();
+            final ArrayList<Product> products = basket.getProducts();
 
             total_cost = root.findViewById(R.id.basket_total_cost);
             Button ok = root.findViewById(R.id.basket_ok);
@@ -80,7 +80,8 @@ public class BasketFragment extends Fragment {
             ok.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(getContext(), "your order : ", Toast.LENGTH_LONG).show();
+                    String temp = "";
+                    Toast.makeText(getContext(), basket.getTotalCost() + " tutarlı siparişiniz alındı !", Toast.LENGTH_LONG).show();
                     String order = gson.toJson(basket);
                     Log.v("BASKET JSON", order);
                 }
