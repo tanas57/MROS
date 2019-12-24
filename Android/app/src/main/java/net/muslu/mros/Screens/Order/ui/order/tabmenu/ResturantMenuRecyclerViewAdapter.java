@@ -43,7 +43,7 @@ public class ResturantMenuRecyclerViewAdapter extends RecyclerView.Adapter<Restu
         holder.products.setAdapter(new CatProductDisplayAdapter(context, products, new CatProductDisplayAdapter.ClickListener() {
             @Override
             public void onPositionClicked(View view, Product product, int pos) {
-                Toast.makeText(context, product.getName() + " " + product.getPrice(),Toast.LENGTH_LONG).show();
+
                 Intent intent = new Intent(context, ProductDetail.class);
                 intent.putExtra("product", product);
                 context.startActivity(intent);
@@ -52,7 +52,6 @@ public class ResturantMenuRecyclerViewAdapter extends RecyclerView.Adapter<Restu
         }));
         holder.products.setLayoutManager(new LinearLayoutManager(context));
         holder.products.setHasFixedSize(false);
-        //Picasso.with(mContext).load(barcodeReadModel.getBarcodeImgApiURL()).into(holder.packageBarcode);
     }
 
     @Override

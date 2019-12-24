@@ -27,10 +27,16 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 public class BarcodeRead extends AppCompatActivity implements ZXingScannerView.ResultHandler {
     private ZXingScannerView mScannerView;
+    private ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_barcode_read);
+
+        progressDialog = new ProgressDialog(BarcodeRead.this);
+        progressDialog.setTitle(getString(R.string.connecting_server));
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage(getString(R.string.fetching_restaurant));
 
         ViewGroup contentFrame = (ViewGroup) findViewById(R.id.camera);
 
@@ -68,14 +74,10 @@ public class BarcodeRead extends AppCompatActivity implements ZXingScannerView.R
 
 
     protected class FetchRestaurant extends AsyncTask<String, Object, Restaurant> {
-        ProgressDialog progressDialog = new ProgressDialog(BarcodeRead.this);
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            progressDialog.setTitle(getString(R.string.connecting_server));
-            progressDialog.setCancelable(false);
-            progressDialog.setMessage(getString(R.string.fetching_restaurant));
             progressDialog.show();
         }
 

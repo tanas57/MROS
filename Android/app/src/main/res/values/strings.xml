@@ -21,6 +21,8 @@
     <string name="welcome">Restoranta hoşgeldiniz!</string>
     <string name="connecting_server">Sunucu Bağlantısı</string>
     <string name="fetching_restaurant">Restorant bilgisine ulaşılıyor..</string>
+    <string name="empty_basket">Sepeti Boşalt</string>
+    <string name="warning_empty_basket">Henüz sepete ürün eklenmedi.</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="medium_text">Medium text Medium text Medium text Medium text Medium text Medium text Medium text Medium text Medium text Medium text </string>

@@ -32,6 +32,9 @@ public class BasketFragment extends Fragment {
     private BasketViewModel basketViewModel;
     private RecyclerView user_basket;
     private TextView total_cost;
+
+    private Basket basket;
+
     public static CommentFragment newInstance() {
         return new CommentFragment();
     }
@@ -41,48 +44,64 @@ public class BasketFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         basketViewModel =
                 ViewModelProviders.of(this).get(BasketViewModel.class);
-        View root = inflater.inflate(R.layout.basket_fragment, container, false);
-
-        user_basket = root.findViewById(R.id.user_basket);
-        user_basket.setLayoutManager(new LinearLayoutManager(getContext()));
-        getdata();
-
-        total_cost = root.findViewById(R.id.basket_total_cost);
-        Button ok = root.findViewById(R.id.basket_ok);
-
-        ok.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(), "your order : ", Toast.LENGTH_LONG).show();;
-            }
-        });
 
 
-        return root;
+        basket = getdata();
+
+        if(basket == null){
+            View empty_basket = inflater.inflate(R.layout.empty_basket_layout, container, false);
+
+            return empty_basket;
+        }else{
+
+            View root = inflater.inflate(R.layout.basket_fragment, container, false);
+
+            user_basket = root.findViewById(R.id.user_basket);
+            user_basket.setLayoutManager(new LinearLayoutManager(getContext()));
+
+            ArrayList<Product> products = basket.getProducts();
+
+            total_cost = root.findViewById(R.id.basket_total_cost);
+            Button ok = root.findViewById(R.id.basket_ok);
+
+            ok.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(getContext(), "your order : ", Toast.LENGTH_LONG).show();;
+                }
+            });
+
+            Log.v("BASKET GET DATA", " NUM OF " + products.size());
+            BasketAdapter basketAdapter = new BasketAdapter(getContext(), products, new BasketAdapter.ClickListener() {
+                @Override
+                public void onPositionClicked(View view, Product product, int pos) {
+
+                }
+            });
+            user_basket.setAdapter(basketAdapter);
+            String temp = basket.getTotalCost() + " TL";
+            total_cost.setText(temp);
+
+
+            return root;
+
+        }
     }
 
-    private void getdata(){
+    private Basket getdata(){
         try{
             Basket basket = Data.get(getContext());
             Log.v("BASKET GET DATA", "TRY TO GET DATA");
             if(basket != null) {
                 ArrayList<Product> products = basket.getProducts();
                 if (products.size() > 0) {
-                    Log.v("BASKET GET DATA", " NUM OF " + products.size());
-                    BasketAdapter basketAdapter = new BasketAdapter(getContext(), products, new BasketAdapter.ClickListener() {
-                        @Override
-                        public void onPositionClicked(View view, Product product, int pos) {
 
-                        }
-                    });
-                    user_basket.setAdapter(basketAdapter);
-                    String temp = basket.getTotalCost() + " TL";
-                    total_cost.setText(temp);
+                    return basket;
                 }
             }
         }
         catch (Exception e){e.printStackTrace();}
-
+        return null;
     }
 
     @Override
