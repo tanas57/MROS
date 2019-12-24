@@ -5,9 +5,11 @@ import java.util.ArrayList;
 
 public class Basket implements Serializable {
     protected ArrayList<Product> products;
+    protected Restaurant restaurant;
 
     public Basket(){
         products = new ArrayList<>();
+        restaurant = null;
     }
 
     public ArrayList<Product> getProducts() {
@@ -33,5 +35,13 @@ public class Basket implements Serializable {
             result += item.getPreparation() * item.getPrice();
         }
         return result;
+    }
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
 }

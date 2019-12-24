@@ -1,13 +1,10 @@
 package net.muslu.mros.Screens.Order;
 
 import android.app.ProgressDialog;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import android.widget.Toast;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -91,8 +88,6 @@ public class MainPage extends AppCompatActivity implements MrosData {
         products = new ArrayList<>();
         basket = new Basket();
 
-        Data.set(basket, getApplicationContext());
-
         //result = findViewById(R.id.result);
         navView = findViewById(R.id.nav_view);
 
@@ -108,6 +103,8 @@ public class MainPage extends AppCompatActivity implements MrosData {
             setRestaurant(gson.fromJson(res, Restaurant.class));
         }
 
+        basket.setRestaurant(getRestaurant());
+        Data.set(basket, getApplicationContext());
         setTitle(getRestaurant().getFullName() + " | " + getString(R.string.app_name));;
 
         dialog = new ProgressDialog(MainPage.this);

@@ -1,7 +1,5 @@
 package net.muslu.mros.Models;
 
-import com.google.gson.annotations.SerializedName;
-
 import java.io.Serializable;
 
 public class Restaurant implements Serializable {
@@ -18,6 +16,7 @@ public class Restaurant implements Serializable {
     protected boolean status;
     protected int orderCount;
     protected int totalGain;
+    protected int tableid;
 
     public Restaurant(int id, String fullName, String address, String phone,
                       String logo, String photo, String information, double latitude,
@@ -34,6 +33,14 @@ public class Restaurant implements Serializable {
         this.status = status;
         this.orderCount = orderCount;
         this.totalGain = totalGain;
+    }
+
+    public int getTableid() {
+        return tableid;
+    }
+
+    public void setTableid(int tableid) {
+        this.tableid = tableid;
     }
 
     public int getId() {

@@ -9,7 +9,7 @@ import com.google.gson.Gson;
 import net.muslu.mros.Models.Basket;
 
 public class Data {
-    private static final String BASKET = "BASKET";
+    private static final String BASKET = "BASKET2";
     static Gson gson = new Gson();
     public static void set(Basket value, Context context) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);

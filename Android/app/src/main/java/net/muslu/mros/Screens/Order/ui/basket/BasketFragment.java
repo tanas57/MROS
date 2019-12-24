@@ -27,6 +27,9 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import net.muslu.mros.Data;
 import net.muslu.mros.Models.Basket;
 import net.muslu.mros.Models.Product;
@@ -41,7 +44,7 @@ public class BasketFragment extends Fragment {
 
     private RecyclerView user_basket;
     private TextView total_cost;
-
+    private Gson gson;
     private Basket basket;
     private MainPage mainPage;
     @Override
@@ -50,13 +53,12 @@ public class BasketFragment extends Fragment {
         super.onAttach(activity);
     }
 
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         setHasOptionsMenu(true);
-
+        gson = new GsonBuilder().create();
         basket = getdata();
 
         if(basket == null){
@@ -78,7 +80,9 @@ public class BasketFragment extends Fragment {
             ok.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(getContext(), "your order : ", Toast.LENGTH_LONG).show();;
+                    Toast.makeText(getContext(), "your order : ", Toast.LENGTH_LONG).show();
+                    String order = gson.toJson(basket);
+                    Log.v("BASKET JSON", order);
                 }
             });
 

@@ -92,6 +92,7 @@ public class BarcodeRead extends AppCompatActivity implements ZXingScannerView.R
                 Gson gson= new GsonBuilder().create();
                 restaurant = gson.fromJson(new JSONObject(jsonObject).getJSONObject("restaurant").toString(), Restaurant.class);
                 if(restaurant != null){
+                    restaurant.setTableid(Integer.valueOf(strings[0]));
                     Log.v("RESTORAN_IN_SUCCESS", restaurant.getFullName() + " is successfully serialized");
                     Toast.makeText(getApplicationContext(), restaurant.getFullName() + getString(R.string.welcome), Toast.LENGTH_LONG).show();
                 }
