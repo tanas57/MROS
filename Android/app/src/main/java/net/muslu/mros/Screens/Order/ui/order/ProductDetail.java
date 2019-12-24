@@ -2,24 +2,17 @@ package net.muslu.mros.Screens.Order.ui.order;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import com.google.gson.Gson;
-
+import android.widget.Toast;
 import net.muslu.mros.Data;
 import net.muslu.mros.Models.Basket;
 import net.muslu.mros.Models.Product;
-import net.muslu.mros.MrosData;
 import net.muslu.mros.R;
-
-import java.util.ArrayList;
 
 public class ProductDetail extends AppCompatActivity {
 
@@ -89,6 +82,7 @@ public class ProductDetail extends AppCompatActivity {
                 product.setPreparation(count);
                 basket.addProduct(product);
                 onBackPressed();
+                Toast.makeText(getApplicationContext(), product.getPreparation() + " adet " + product.getName() + " sepete eklendi",Toast.LENGTH_SHORT).show();
             }
         });
 
