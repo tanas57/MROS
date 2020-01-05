@@ -1,8 +1,7 @@
 # MROS
 Native Mobile Restaurant Ordering Software With QRCode
 
-![MROS GIF](https://github.com/tanas57/MROS/blob/master/project_gif.gif?raw=true)
-
+The design was inspired by the "Yemeksepeti" application.
 
 ## First we must be in a restaurant
 ## Scan QRCode
@@ -10,3 +9,6 @@ Native Mobile Restaurant Ordering Software With QRCode
 ## Choose your product
 ## Confirm your order
 ## Enjoy your meal
+
+
+![MROS GIF](https://github.com/tanas57/MROS/blob/master/project_gif.gif?raw=true)
