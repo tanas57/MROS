@@ -15,6 +15,11 @@
 		81BB8DB623AB993E0032749F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81BB8DB423AB993E0032749F /* LaunchScreen.storyboard */; };
 		81BB8DC123AB993E0032749F /* MROSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BB8DC023AB993E0032749F /* MROSTests.swift */; };
 		81BB8DCC23AB993E0032749F /* MROSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BB8DCB23AB993E0032749F /* MROSUITests.swift */; };
+		81BB8DDB23ABA16F0032749F /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BB8DDA23ABA16F0032749F /* plus.png */; };
+		81BB8DDD23C7F1870032749F /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BB8DDC23C7F1870032749F /* ProductsViewController.swift */; };
+		81BB8DE023D449F40032749F /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BB8DDF23D449F40032749F /* Product.swift */; };
+		81BB8DE623D485300032749F /* ProductCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BB8DE523D485300032749F /* ProductCategory.swift */; };
+		81BB8DE823D4855A0032749F /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BB8DE723D4855A0032749F /* Restaurant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +54,11 @@
 		81BB8DC723AB993E0032749F /* MROSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MROSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		81BB8DCB23AB993E0032749F /* MROSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MROSUITests.swift; sourceTree = "<group>"; };
 		81BB8DCD23AB993E0032749F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		81BB8DDA23ABA16F0032749F /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
+		81BB8DDC23C7F1870032749F /* ProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewController.swift; sourceTree = "<group>"; };
+		81BB8DDF23D449F40032749F /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		81BB8DE523D485300032749F /* ProductCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCategory.swift; sourceTree = "<group>"; };
+		81BB8DE723D4855A0032749F /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +109,12 @@
 		81BB8DA723AB993C0032749F /* MROS */ = {
 			isa = PBXGroup;
 			children = (
+				81BB8DDE23D449B70032749F /* models */,
+				81BB8DD923AB9EC20032749F /* images */,
 				81BB8DA823AB993C0032749F /* AppDelegate.swift */,
 				81BB8DAA23AB993C0032749F /* ViewController.swift */,
 				81BB8DAC23AB993C0032749F /* Main.storyboard */,
+				81BB8DDC23C7F1870032749F /* ProductsViewController.swift */,
 				81BB8DB223AB993E0032749F /* Assets.xcassets */,
 				81BB8DB423AB993E0032749F /* LaunchScreen.storyboard */,
 				81BB8DB723AB993E0032749F /* Info.plist */,
@@ -126,6 +139,24 @@
 				81BB8DCD23AB993E0032749F /* Info.plist */,
 			);
 			path = MROSUITests;
+			sourceTree = "<group>";
+		};
+		81BB8DD923AB9EC20032749F /* images */ = {
+			isa = PBXGroup;
+			children = (
+				81BB8DDA23ABA16F0032749F /* plus.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		81BB8DDE23D449B70032749F /* models */ = {
+			isa = PBXGroup;
+			children = (
+				81BB8DDF23D449F40032749F /* Product.swift */,
+				81BB8DE523D485300032749F /* ProductCategory.swift */,
+				81BB8DE723D4855A0032749F /* Restaurant.swift */,
+			);
+			path = models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,6 +266,7 @@
 				81BB8DB623AB993E0032749F /* LaunchScreen.storyboard in Resources */,
 				81BB8DB323AB993E0032749F /* Assets.xcassets in Resources */,
 				81BB8DAE23AB993C0032749F /* Main.storyboard in Resources */,
+				81BB8DDB23ABA16F0032749F /* plus.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,7 +293,11 @@
 			files = (
 				81BB8DAB23AB993C0032749F /* ViewController.swift in Sources */,
 				81BB8DB123AB993C0032749F /* MROS.xcdatamodeld in Sources */,
+				81BB8DE023D449F40032749F /* Product.swift in Sources */,
+				81BB8DDD23C7F1870032749F /* ProductsViewController.swift in Sources */,
 				81BB8DA923AB993C0032749F /* AppDelegate.swift in Sources */,
+				81BB8DE623D485300032749F /* ProductCategory.swift in Sources */,
+				81BB8DE823D4855A0032749F /* Restaurant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
