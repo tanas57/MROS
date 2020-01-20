@@ -21,6 +21,7 @@ class ProductsViewController: UIViewController,UITableViewDelegate,UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        navigationItem.title = "Restorant Ürünleri"
         products.delegate = self
         products.dataSource = self
         fetchProductCategories()
