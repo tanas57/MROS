@@ -12,6 +12,10 @@ class ViewController: UIViewController {
     
     var restaurant:Restaurant = Restaurant()
     
+    @IBAction func restaurantlogin(_ sender: Any) {
+        
+        performSegue(withIdentifier: "restaurantLogin", sender: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -34,13 +38,12 @@ class ViewController: UIViewController {
             restaurant = try JSONDecoder().decode(Restaurant.self, from: data)
             print("deneme")
             print(restaurant.fullName!)
-            performSegue(withIdentifier: "restaurantLogin", sender: nil)
         }
         catch let er { print(er.localizedDescription)}
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "selectNewsPaper" {
+        if segue.identifier == "restaurantLogin" {
             let destinationVC = segue.destination as! ProductsViewController
             destinationVC.restaurant = self.restaurant
         }

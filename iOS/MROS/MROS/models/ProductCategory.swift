@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ProductCategory{
+struct ProductCategory : Codable{
     var id: Int?
     var catName: String?
     var catIMG: String?

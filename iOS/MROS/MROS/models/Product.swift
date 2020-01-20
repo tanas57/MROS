@@ -9,7 +9,7 @@
 import Foundation
 
 
-struct Product {
+struct Product : Codable {
     var id: Int?
     var name:String?
     var price:Double?

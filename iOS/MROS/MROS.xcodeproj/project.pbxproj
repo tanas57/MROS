@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8175577623D630A500B36038 /* ProductCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8175577523D630A500B36038 /* ProductCellTableViewCell.swift */; };
 		81BB8DA923AB993C0032749F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BB8DA823AB993C0032749F /* AppDelegate.swift */; };
 		81BB8DAB23AB993C0032749F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BB8DAA23AB993C0032749F /* ViewController.swift */; };
 		81BB8DAE23AB993C0032749F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81BB8DAC23AB993C0032749F /* Main.storyboard */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8175577523D630A500B36038 /* ProductCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCellTableViewCell.swift; sourceTree = "<group>"; };
 		81BB8DA523AB993C0032749F /* MROS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MROS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81BB8DA823AB993C0032749F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81BB8DAA23AB993C0032749F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -112,9 +114,10 @@
 				81BB8DDE23D449B70032749F /* models */,
 				81BB8DD923AB9EC20032749F /* images */,
 				81BB8DA823AB993C0032749F /* AppDelegate.swift */,
-				81BB8DAA23AB993C0032749F /* ViewController.swift */,
 				81BB8DAC23AB993C0032749F /* Main.storyboard */,
+				81BB8DAA23AB993C0032749F /* ViewController.swift */,
 				81BB8DDC23C7F1870032749F /* ProductsViewController.swift */,
+				8175577523D630A500B36038 /* ProductCellTableViewCell.swift */,
 				81BB8DB223AB993E0032749F /* Assets.xcassets */,
 				81BB8DB423AB993E0032749F /* LaunchScreen.storyboard */,
 				81BB8DB723AB993E0032749F /* Info.plist */,
@@ -296,6 +299,7 @@
 				81BB8DE023D449F40032749F /* Product.swift in Sources */,
 				81BB8DDD23C7F1870032749F /* ProductsViewController.swift in Sources */,
 				81BB8DA923AB993C0032749F /* AppDelegate.swift in Sources */,
+				8175577623D630A500B36038 /* ProductCellTableViewCell.swift in Sources */,
 				81BB8DE623D485300032749F /* ProductCategory.swift in Sources */,
 				81BB8DE823D4855A0032749F /* Restaurant.swift in Sources */,
 			);
