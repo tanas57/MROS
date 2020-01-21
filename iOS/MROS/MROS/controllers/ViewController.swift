@@ -43,7 +43,6 @@ class ViewController: UIViewController {
     func retreiveData(_ data:Data) -> Void {
         do{
             restaurant = try JSONDecoder().decode(Restaurant.self, from: data)
-            print("deneme")
             print(restaurant.fullName!)
             
         }
@@ -54,8 +53,10 @@ class ViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "restaurantLogin" {
-            let destinationVC = segue.destination as! ProductsViewController
-            destinationVC.restaurant = self.restaurant
+            let destinationVC = segue.destination as! TabViewController
+            let desView: RestaurantInfoViewController = destinationVC.viewControllers?.first as! RestaurantInfoViewController
+            
+            desView.restaurant = self.restaurant
         }
     }
 }

@@ -21,7 +21,9 @@ class ProductsViewController: UIViewController,UITableViewDelegate,UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        navigationItem.title = "Restorant Ürünleri"
+        let infoTab = self.tabBarController?.viewControllers![0] as! RestaurantInfoViewController
+        self.restaurant = infoTab.restaurant
+        print("product tab => \(restaurant.fullName!)")
         products.delegate = self
         products.dataSource = self
         fetchProductCategories()
