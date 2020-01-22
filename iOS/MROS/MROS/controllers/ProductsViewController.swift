@@ -23,6 +23,7 @@ class ProductsViewController: UIViewController,UITableViewDelegate,UITableViewDa
         // Do any additional setup after loading the view, typically from a nib.
         
         self.products.rowHeight = 55
+        self.navigationItem.title = "Restorant Ürünleri"
         
         let infoTab = self.tabBarController?.viewControllers![0] as! RestaurantInfoViewController
         self.restaurant = infoTab.restaurant
@@ -100,11 +101,27 @@ class ProductsViewController: UIViewController,UITableViewDelegate,UITableViewDa
         return cell
     }
     
+    var selectedProduct:Product = Product()
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        selectedProduct = productList[indexPath.row]
         /*
-        choosenNewspaper = urlnameArray[indexPath.row]
-        choosenNewsName = nameArray[indexPath.row]
-        performSegue(withIdentifier: "selectNewsPaper", sender: nil)
- */
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let nextVC = storyboard.instantiateViewController(withIdentifier: "deneme") as! AddBasketViewController
+        nextVC.product = selectedProduct
+        let navVC = UINavigationController(rootViewController: nextVC)
+        present(navVC, 	animated: false, completion: nil)
+        */
+        self.performSegue(withIdentifier: "addBasket", sender: nil)
+        
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "addBasket" {
+            let destinationVC = segue.destination as! AddBasketViewController
+            destinationVC.product = selectedProduct
+        }
     }
 }

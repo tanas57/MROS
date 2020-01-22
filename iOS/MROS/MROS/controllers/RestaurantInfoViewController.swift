@@ -13,6 +13,7 @@ class RestaurantInfoViewController: UIViewController {
     
     var restaurant:Restaurant = Restaurant()
     
+    @IBOutlet weak var restorantname: UILabel!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var phone: UITextView!
     @IBOutlet weak var address: UITextView!
@@ -26,6 +27,7 @@ class RestaurantInfoViewController: UIViewController {
         self.phone.text = restaurant.phone!
         self.address.text = restaurant.address!
         self.info.text = restaurant.information!
+        self.restorantname.text = "\(restaurant.fullName!) - Hoşgeldiniz"
         
         let url = URL(string: "https://mros.api.muslu.net/v1/restaurant/image/\(restaurant.id!)")!
         //

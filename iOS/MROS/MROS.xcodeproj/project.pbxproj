@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		8175577623D630A500B36038 /* ProductCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8175577523D630A500B36038 /* ProductCellTableViewCell.swift */; };
+		819ECDB023D8BE03006D821F /* BasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819ECDAF23D8BE03006D821F /* BasketViewController.swift */; };
+		819ECDB223D8C0DA006D821F /* BasketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819ECDB123D8C0DA006D821F /* BasketTableViewCell.swift */; };
+		819ECDB423D8C4EF006D821F /* AddBasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819ECDB323D8C4EF006D821F /* AddBasketViewController.swift */; };
 		81A2EAB823D66551002692EB /* fork.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A2EAB723D66551002692EB /* fork.png */; };
 		81A2EABA23D665C0002692EB /* fork_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A2EAB923D665BF002692EB /* fork_red.png */; };
 		81A2EABC23D66691002692EB /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A2EABB23D66691002692EB /* info.png */; };
@@ -57,6 +60,9 @@
 
 /* Begin PBXFileReference section */
 		8175577523D630A500B36038 /* ProductCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCellTableViewCell.swift; sourceTree = "<group>"; };
+		819ECDAF23D8BE03006D821F /* BasketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketViewController.swift; sourceTree = "<group>"; };
+		819ECDB123D8C0DA006D821F /* BasketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketTableViewCell.swift; sourceTree = "<group>"; };
+		819ECDB323D8C4EF006D821F /* AddBasketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBasketViewController.swift; sourceTree = "<group>"; };
 		81A2EAB723D66551002692EB /* fork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fork.png; sourceTree = "<group>"; };
 		81A2EAB923D665BF002692EB /* fork_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fork_red.png; sourceTree = "<group>"; };
 		81A2EABB23D66691002692EB /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info.png; sourceTree = "<group>"; };
@@ -128,6 +134,9 @@
 				81A2EAC223D66C58002692EB /* TabViewController.swift */,
 				81A2EACE23D7B056002692EB /* CommentViewController.swift */,
 				81A2EAD623D7B330002692EB /* CommentTableViewCell.swift */,
+				819ECDAF23D8BE03006D821F /* BasketViewController.swift */,
+				819ECDB123D8C0DA006D821F /* BasketTableViewCell.swift */,
+				819ECDB323D8C4EF006D821F /* AddBasketViewController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -356,6 +365,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				819ECDB423D8C4EF006D821F /* AddBasketViewController.swift in Sources */,
+				819ECDB023D8BE03006D821F /* BasketViewController.swift in Sources */,
+				819ECDB223D8C0DA006D821F /* BasketTableViewCell.swift in Sources */,
 				81BB8DAB23AB993C0032749F /* ViewController.swift in Sources */,
 				81BB8DB123AB993C0032749F /* MROS.xcdatamodeld in Sources */,
 				81BB8DE023D449F40032749F /* Product.swift in Sources */,

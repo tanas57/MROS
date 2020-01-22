@@ -26,7 +26,7 @@ class ViewController: UIViewController {
         indicator.hidesWhenStopped = true
         self.indicator.startAnimating()
         
-        if let url = URL(string: "https://mros.api.muslu.net/v1/restaurant/2") {
+        if let url = URL(string: "https://mros.api.muslu.net/v1/restaurant/1") {
             URLSession.shared.dataTask(with: url) { data, response, error in
                 
                 if let data = data {

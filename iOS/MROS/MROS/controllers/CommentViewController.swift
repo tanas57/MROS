@@ -20,6 +20,7 @@ class CommentViewController: UIViewController,UITableViewDelegate,UITableViewDat
         super.viewDidLoad()
         self.indicator.hidesWhenStopped = true
         self.commentTable.rowHeight = 150
+        self.navigationItem.title = "Restorant Yorumları"
         
         let infoTab = self.tabBarController?.viewControllers![0] as! RestaurantInfoViewController
         self.restaurant = infoTab.restaurant
@@ -42,7 +43,7 @@ class CommentViewController: UIViewController,UITableViewDelegate,UITableViewDat
         let res: FeedBack = comments[indexPath.row]
         
         cell.fullname.text = res.owner?.fullName!
-        cell.points.text = "Servis \(res.ratingService!) Hız \(res.serviceTime!) Lezzet \(res.ratingFlavor!) Garson \(res.ratingWaiter!)"
+        cell.points.text = "Servis \((Int)(res.ratingService!)) Hız \((Int)(res.serviceTime!)) Lezzet \((Int)(res.ratingFlavor!)) Garson \((Int)(res.ratingWaiter!))"
         cell.message.text = res.message!
         
         return cell
