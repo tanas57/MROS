@@ -21,6 +21,9 @@ class ProductsViewController: UIViewController,UITableViewDelegate,UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        self.products.rowHeight = 55
+        
         let infoTab = self.tabBarController?.viewControllers![0] as! RestaurantInfoViewController
         self.restaurant = infoTab.restaurant
         print("product tab => \(restaurant.fullName!)")
@@ -92,7 +95,7 @@ class ProductsViewController: UIViewController,UITableViewDelegate,UITableViewDa
         
         cell.product_add.image = add_icon
         cell.product_name.text = res.name!
-        cell.product_cost.text = "\(res.price!) TL"
+        cell.product_price.text = "\(res.price!) TL"
         
         return cell
     }

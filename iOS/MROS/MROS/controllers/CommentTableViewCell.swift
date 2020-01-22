@@ -11,9 +11,9 @@ import UIKit
 class CommentTableViewCell: UITableViewCell {
 
     @IBOutlet weak var profile: UIImageView!
-    @IBOutlet weak var fullname: UITextView!
-    @IBOutlet weak var points: UITextView!
-    @IBOutlet weak var message: UITextView!
+    @IBOutlet weak var fullname: UILabel!
+    @IBOutlet weak var points: UILabel!
+    @IBOutlet weak var message: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
