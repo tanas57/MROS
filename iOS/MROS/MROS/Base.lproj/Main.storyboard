@@ -28,6 +28,7 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bCq-Z7-3hK">
                                         <rect key="frame" x="1" y="0.0" width="372" height="276"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.40958950989999998" green="0.46869230369999998" blue="0.50259067359999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aYq-JN-WSG">
                                         <rect key="frame" x="51" y="384" width="86" height="30"/>
@@ -67,6 +68,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="MROS" id="G0H-kn-pgw"/>
                     <connections>
+                        <outlet property="image" destination="bCq-Z7-3hK" id="0tS-Un-BGB"/>
                         <outlet property="indicator" destination="SxL-f0-dhO" id="csA-0V-KrQ"/>
                         <outlet property="restaurantName" destination="9Qi-pO-kky" id="Ypj-Ga-WTS"/>
                         <outlet property="restorantID" destination="aYq-JN-WSG" id="bEz-6S-CWq"/>
@@ -75,7 +77,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2437.5999999999999" y="-1043.0284857571214"/>
+            <point key="canvasLocation" x="2799" y="-1043"/>
         </scene>
         <!--Title-->
         <scene sceneID="ud5-6q-XyW">
@@ -342,7 +344,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="koC-JU-jHL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6224.8000000000002" y="-1992.0539730134933"/>
+            <point key="canvasLocation" x="4737" y="-1873"/>
         </scene>
         <!--Yorumlar-->
         <scene sceneID="4P2-ve-LbY">
@@ -570,7 +572,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LOj-rN-cDG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1633" y="-1043"/>
+            <point key="canvasLocation" x="2100" y="-1043"/>
         </scene>
     </scenes>
     <resources>
