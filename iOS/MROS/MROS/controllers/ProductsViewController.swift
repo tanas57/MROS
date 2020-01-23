@@ -123,4 +123,5 @@ class ProductsViewController: UIViewController,UITableViewDelegate,UITableViewDa
         self.present(alert, animated: true, completion: nil)
         Timer.scheduledTimer(withTimeInterval: 1.2, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
     }
+    
 }

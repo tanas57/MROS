@@ -80,5 +80,12 @@ class BasketViewController: UIViewController, UITableViewDelegate,UITableViewDat
         self.present(alert, animated: true, completion: nil)
         Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
     }
+    
+    func showBasketOKAlert() {
+        let message = "Sepetinizdeki \(products.count) adet ürün restoranta iletildi, Teşekkür ederiz."
+        let alert = UIAlertController(title: "Sepeti Onayı", message: message, preferredStyle: .alert)
+        self.present(alert, animated: true, completion: nil)
+        Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
+    }
 
 }
