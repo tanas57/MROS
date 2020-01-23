@@ -21,11 +21,32 @@ class BasketViewController: UIViewController, UITableViewDelegate,UITableViewDat
         basketTable.delegate = self
         basketTable.dataSource = self
         self.totalPrice.text = "Toplam : 00.00 TL"
+        
+        totalCost()
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        basketTable.reloadData()
+        totalCost()
+    }
+    
+    func totalCost() {
+        var sum: Double = 0.0
+        
+        for item in products{
+            sum += item.price!
+        }
+        
+        self.totalPrice.text = "Toplam : \(sum) TL"
     }
     
     @IBAction func emptyBasket(_ sender: UIButton) {
         // empty basket
+        showAlert()
+        products.removeAll()
+        self.totalPrice.text = "Toplam : 00.00 TL"
+        basketTable.reloadData()
     }
     
     @IBAction func basketOK(_ sender: Any) {
@@ -51,6 +72,13 @@ class BasketViewController: UIViewController, UITableViewDelegate,UITableViewDat
         cell.productPrice.text = "\(result) TL"
         
         return cell
+    }
+    
+    func showAlert() {
+        let message = "Sepetinizdeki \(products.count) adet ürün kaldırıldı"
+        let alert = UIAlertController(title: "Sepeti Boşalt", message: message, preferredStyle: .alert)
+        self.present(alert, animated: true, completion: nil)
+        Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
     }
 
 }

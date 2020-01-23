@@ -106,22 +106,21 @@ class ProductsViewController: UIViewController,UITableViewDelegate,UITableViewDa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         selectedProduct = productList[indexPath.row]
-        /*
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let nextVC = storyboard.instantiateViewController(withIdentifier: "deneme") as! AddBasketViewController
-        nextVC.product = selectedProduct
-        let navVC = UINavigationController(rootViewController: nextVC)
-        present(navVC, 	animated: false, completion: nil)
-        */
-        self.performSegue(withIdentifier: "addBasket", sender: nil)
+        selectedProduct.preparation = 1
         
+        //self.performSegue(withIdentifier: "addBasket", sender: nil)
         
+        //UserDefaults.standard.set(selectedProduct, forKey: "selectedProduct")
+        //self.tabBarController?.performSegue(withIdentifier: "addBasket", sender: self.tabBarController)
+        showAlert()
+        let infoTab = self.tabBarController?.viewControllers![2] as! BasketViewController
+        infoTab.products.append(selectedProduct)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "addBasket" {
-            let destinationVC = segue.destination as! AddBasketViewController
-            destinationVC.product = selectedProduct
-        }
+    func showAlert() {
+        let message = "1 adet \(selectedProduct.name!) sepetinize ekleniyor.. "
+        let alert = UIAlertController(title: "Sepete Ekle", message: message, preferredStyle: .alert)
+        self.present(alert, animated: true, completion: nil)
+        Timer.scheduledTimer(withTimeInterval: 1.2, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
     }
 }

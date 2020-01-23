@@ -19,6 +19,11 @@ class AddBasketViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        print("add product view")
+        let name = UserDefaults.standard.string(forKey: "selectedProduct") as! Product
+        print(name.name!)
+
+        
         self.productName.text = product.name!
         self.prep.text = "\(product.preparation!)"
         self.price.text = "\(product.price!)"
